@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NewBillComponent } from "./new-bill/new-bill.component";
 
 @Component({
   selector: 'app-root',
