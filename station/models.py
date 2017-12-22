@@ -12,7 +12,7 @@ TWOPLACES = Decimal(10) ** -2
 
 class Dude(models.Model):
     """
-    Represents a person eligible for having bills or payments
+    A person eligible for having bills or payments
     """
     name = models.CharField(max_length=30)
     still_here = models.BooleanField(default=True)
@@ -24,7 +24,7 @@ class Dude(models.Model):
 
 class Bill(models.Model):
     """
-    A bill for a specific point in time paid
+    A bill at a specific point in time paid by the owner
     """
     description = models.CharField(max_length=30)
     date = models.DateField(default=timezone.now().date)
@@ -83,7 +83,7 @@ class Bill(models.Model):
 
 class Payment(models.Model):
     """
-    A payment maid for a bill by someone
+    A payment made to a bill by another dude to reduce his share
     """
     bill = models.ForeignKey('Bill')
     by = models.ForeignKey('Dude')
