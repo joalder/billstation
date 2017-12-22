@@ -1,26 +1,30 @@
+<!doctype html>
+
 {% load static %}
+
 <html>
-  <head>
+<head>
     <title>{% block title %}Bill station is back!{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static "css/style.css" %}">
-    <!-- 1. Load libraries -->
-     <!-- Polyfill(s) for older browsers -->
-    <script src="{% static "node_modules/core-js/client/shim.min.js" %}"></script>
-    <script src="{% static "node_modules/zone.js/dist/zone.js" %}"></script>
-    <script src="{% static "node_modules/reflect-metadata/Reflect.js" %}"></script>
-    <script src="{% static "node_modules/systemjs/dist/system.src.js" %}"></script>
-    <!-- 2. Configure SystemJS -->
-    <script src="{% static "systemjs.config.js" %}"></script>
-    <script>
-      System.import('app').catch(function(err){ console.error(err); });
-    </script>
-  </head>
-  <!-- 3. Display the application -->
-  <body>
-  {% block content %}
-    <my-app>Loading...</my-app>
-  {% endblock %}
-  </body>
+</head>
+    <body>
+        {% block content %}
+            <app-root>Loading...</app-root>
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static "inline.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "polyfills.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "styles.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "vendor.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "main.bundle.js" %}"></script>
+    </body>
 </html>
