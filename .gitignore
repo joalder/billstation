@@ -93,3 +93,6 @@ db.sqlite3
 
 .idea/*
 !.idea/runConfigurations
+
+# exclude generated static content
+station/static/*
