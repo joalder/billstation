@@ -15,7 +15,8 @@ export class NewBillComponent implements OnInit {
 
   constructor(private dudeService: DudeService,
               private billService: BillService,
-              public snackBar: MatSnackBar) {}
+              public snackBar: MatSnackBar) {
+  }
 
   ngOnInit() {
     this.getDudes();
@@ -37,7 +38,10 @@ export class NewBillComponent implements OnInit {
     this.inputBill.date = moment(this.inputBill.date).format('YYYY-MM-DD');
 
     this.billService.saveBill(this.inputBill).subscribe(bill => {
-      this.snackBar.open("Bill " + this.inputBill.description + " for " + this.inputBill.amount + " CHF has been added")
+      this.snackBar.open(
+        "Bill " + this.inputBill.description + " for " + this.inputBill.amount + " CHF has been added",
+        'Dismiss',
+        {duration: 1500});
       this.loadEmptyBill();
     });
   }

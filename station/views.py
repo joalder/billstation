@@ -1,6 +1,8 @@
+import django_filters
 from django.shortcuts import render
 from rest_framework import response, schemas, serializers, viewsets
 from rest_framework.decorators import api_view, renderer_classes
+from rest_framework.renderers import JSONRenderer
 from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
 
 from .models import *
@@ -48,13 +50,35 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
 class DudeViewSet(viewsets.ModelViewSet):
     queryset = Dude.objects.filter(still_here=True)
     serializer_class = DudeSerializer
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
 
 
 class BillViewSet(viewsets.ModelViewSet):
     queryset = Bill.objects.all()
     serializer_class = BillSerializer
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
 
 
 class PaymentViewSet(viewsets.ModelViewSet):
     queryset = Payment.objects.all()
     serializer_class = PaymentSerializer
+    filter_backends = (django_filters.rest_framework.DjangoFilterBackend,)
+
+
+@api_view()
+@renderer_classes((JSONRenderer,))
+def debt_by_relation(request, owner_id, debtor_id):
+    owner = Dude.objects.get(id=owner_id)
+    debtor = Dude.objects.get(id=debtor_id)
+
+    dept = 0
+
+    for bill in Bill.objects.filter(owner_id=owner_id):
+        dept += bill.share(debtor)
+
+    return response.Response({
+        "owner": DudeSerializer(owner, context={'request': request}).data,
+        "debtor": DudeSerializer(debtor, context={'request': request}).data,
+        "dept": dept,
+        "relation": "{0} -> {1}".format(owner, debtor)
+    })
