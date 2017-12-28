@@ -5,6 +5,7 @@ from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
 
 from .models import *
 
+
 # Serves and renders the AngularJS main page
 def serve_main_page(request):
     return render(request, "main.html")
@@ -16,11 +17,13 @@ def schema_view(request):
     generator = schemas.SchemaGenerator(title='Billstation API')
     return response.Response(generator.get_schema(request=request))
 
+
 @api_view()
 @renderer_classes([OpenAPIRenderer])
 def schema_view_raw(request):
     generator = schemas.SchemaGenerator(title='Billstation API RAW')
     return response.Response(generator.get_schema(request=request))
+
 
 # Serializers define the API representation.
 class DudeSerializer(serializers.HyperlinkedModelSerializer):
@@ -43,7 +46,7 @@ class PaymentSerializer(serializers.HyperlinkedModelSerializer):
 
 # ViewSets define the view behavior.
 class DudeViewSet(viewsets.ModelViewSet):
-    queryset = Dude.objects.filter()
+    queryset = Dude.objects.filter(still_here=True)
     serializer_class = DudeSerializer
 
 
