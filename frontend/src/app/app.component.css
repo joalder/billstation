@@ -1,0 +1,11 @@
+.layout-card {
+  margin: 3px;
+  min-width: 50vw;
+  max-width: 90vw;
+  align-self: center;
+}
+
+.layout-card-container {
+  display: flex;
+  flex-direction: column;
+}
