@@ -1,11 +1,12 @@
 .layout-card {
   margin: 3px;
-  min-width: 50vw;
+  min-width: 300px;
   max-width: 90vw;
   align-self: center;
 }
 
 .layout-card-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
