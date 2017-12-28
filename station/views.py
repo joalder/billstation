@@ -29,19 +29,19 @@ def schema_view_raw(request):
 class DudeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Dude
-        fields = ('url', 'name', 'still_here', 'created')
+        fields = ('id', 'url', 'name', 'still_here', 'created')
 
 
 class BillSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Bill
-        fields = ('url', 'description', 'date', 'amount', 'owner', 'affected_dudes', 'created')
+        fields = ('id', 'url', 'description', 'date', 'amount', 'owner', 'affected_dudes', 'created')
 
 
 class PaymentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Payment
-        fields = ('url', 'bill', 'by', 'at', 'amount', 'created')
+        fields = ('id', 'url', 'bill', 'by', 'at', 'amount', 'created')
 
 
 # ViewSets define the view behavior.
