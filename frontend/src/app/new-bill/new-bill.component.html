@@ -1,4 +1,38 @@
 <mat-card>
   <mat-card-title>New Bill</mat-card-title>
-  <mat-card-content></mat-card-content>
+  <mat-card-content>
+    <form class="new-bill" #billForm="ngForm">
+      <mat-form-field>
+        <input matInput [(ngModel)]="inputBill.description" name="description" placeholder="Description (Where/What)" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="inputBill.date" name="date" [matDatepicker]="picker" placeholder="Date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="inputBill.owner" name="owner" placeholder="Owner" required>
+          <mat-option *ngFor="let dude of dudes" [value]="dude.url">
+            {{ dude.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="inputBill.amount" name="amount" type="number" placeholder="Amount (CHF)" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select [(ngModel)]="inputBill.affected_dudes" name="affectedDudes" placeholder="Beneficiary" multiple required>
+          <mat-option *ngFor="let dude of dudes" [value]="dude.url">{{dude.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="saveBill();" [disabled]="!billForm.form.valid">Save</button>
+
+      <pre>{{ inputBill | json }}</pre>
+    </form>
+  </mat-card-content>
 </mat-card>

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DudeService {
 
-  private dudesUrl = 'api/dudes';
+  private dudesUrl = 'api/dudes/';
 
   constructor( private http: HttpClient,) { }
 
@@ -16,8 +16,8 @@ export class DudeService {
 }
 
 export class Dude {
-  public url: String;
+  public id: number;
+  public url: URL;
   public name: String;
-  public still_here: boolean;
   public created: String;
 }
