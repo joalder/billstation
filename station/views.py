@@ -71,14 +71,14 @@ def debt_by_relation(request, owner_id, debtor_id):
     owner = Dude.objects.get(id=owner_id)
     debtor = Dude.objects.get(id=debtor_id)
 
-    dept = 0
+    amount = 0
 
     for bill in Bill.objects.filter(owner_id=owner_id):
-        dept += bill.share(debtor)
+        amount += bill.share(debtor)
 
     return response.Response({
         "owner": DudeSerializer(owner, context={'request': request}).data,
         "debtor": DudeSerializer(debtor, context={'request': request}).data,
-        "dept": dept,
+        "amount": amount,
         "relation": "{0} -> {1}".format(owner, debtor)
     })
