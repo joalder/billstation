@@ -1,9 +1,8 @@
-from decimal import Decimal, getcontext, ROUND_HALF_UP, ROUND_HALF_DOWN
 from decimal import *
+
 from django.db import models
 from django.db.models import Sum
 from django.utils import timezone
-from datetime import date
 
 # Default precision of two decimal places
 getcontext().rounding = ROUND_HALF_UP
