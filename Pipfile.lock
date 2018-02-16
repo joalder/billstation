@@ -29,9 +29,6 @@
         ]
     },
     "default": {
-        "a70e77a": {
-            "path": "C:\\Users\\Jonas\\git_repos\\billstation\\pipfile"
-        },
         "certifi": {
             "hashes": [
                 "sha256:244be0d93b71e93fc0a0a479862051414d0e00e16435707e5bf5000f92e04694",
