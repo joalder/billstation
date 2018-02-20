@@ -22,4 +22,4 @@ Run on CLI
 
 or alternatively shared run configs in the `.idea` folder
 
-Project should now be available under [http://localhost:8000]() and be rebuilt continously
+Project should now be available under [http://localhost:8000](http://localhost:8000) and be rebuilt continously
