@@ -14,6 +14,7 @@ currently uses Django 1.11 + Angular 5
 - activate virtualenv: `venvBillstation\Scripts\activate.bat`
 - install python packages: `pip install -r requires.txt` at project root
 - download JS dependencies: `cd frontend` & `npm install`
+- install angular cli globally to enable the ng command `npm install -g @angluar/cli`
 - setup local DB: `python manage.py migrate` at project root
 
 Run on CLI
