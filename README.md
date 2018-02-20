@@ -1,7 +1,7 @@
 # billstation
 web based bill sharing app - also serves as an experimental playground
 
-currently uses Django 1.10 + Angular 2
+currently uses Django 1.11 + Angular 5
 
 ## Development
 
