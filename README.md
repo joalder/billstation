@@ -13,14 +13,13 @@ currently uses Django 1.10 + Angular 2
 - create virtualenv: `py -m virtualenv venvBillstation` in your local vEnv-folder
 - activate virtualenv: `venvBillstation\Scripts\activate.bat`
 - install python packages: `pip install -r requires.txt` at project root
-- download JS dependencies: `cd station/static` & `npm install`
+- download JS dependencies: `cd frontend` & `npm install`
 - setup local DB: `python manage.py migrate` at project root
-- run local server: `python manage.py runserver localhost:8000`
 
-### Webstorm - Sass compiler setup
+Run on CLI
+- run local server: `python manage.py runserver`
+- run local server: `cd frontend && ng build -w`
 
-- Open Watcher settings: `File` - `Settings` - Search for `File Watchers`
-- Add a new watcher and use a new local scope with the following pattern `file[billstation]:station/static/css/*`)
-- Then configure the rest of the watcher as follows:
-  ![Sass Watcher Settings](docs/screenshots/sass_watcher_config.png "Watcher configs")
-  
+or alternatively shared run configs in the `.idea` folder
+
+Project should now be available under [http://localhost:8000]() and be rebuilt continously
