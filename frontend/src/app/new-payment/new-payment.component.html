@@ -1,4 +1,30 @@
 <mat-card>
   <mat-card-title>New Payment</mat-card-title>
-  <mat-card-content></mat-card-content>
+  <mat-card-content>
+    <form #payBackForm="ngForm">
+      <mat-form-field>
+        <mat-select [(value)]="sender" name="owner" placeholder="View Point" required>
+          <mat-option *ngFor="let dude of dudes" [value]="dude">
+            {{ dude.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input type="text" matInput [formControl]="dudeAutoComplete" [(ngModel)]="receiver" [matAutocomplete]="auto">
+      </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="renderDude">
+        <mat-option *ngFor="let dude of getDudesExceptSelected()" [value]="dude">
+          {{ dude.name }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <mat-form-field>
+        <input matInput [(ngModel)]="paymentAmount" name="amount" type="number" placeholder="Amount (CHF)" required>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="submitPayment()" [disabled]="!payBackForm.form.valid">Save</button>
+    </form>
+  </mat-card-content>
 </mat-card>

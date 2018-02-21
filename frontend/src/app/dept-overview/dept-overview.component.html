@@ -2,31 +2,6 @@
   <mat-card-title>Dept Overview</mat-card-title>
   <mat-card-content>
 
-    <mat-form-field>
-      <mat-select [(ngModel)]="selectedDude" name="owner" placeholder="View" required>
-        <mat-option *ngFor="let dude of dudes" [value]="dude">
-          {{ dude.name }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-list role="list" *ngIf="selectedDude">
-      <mat-list-item *ngFor="let dude of getDudesExceptSelected()">
-        <form #payBackForm="ngForm">
-          {{ dude.name }}
-          <mat-form-field>
-            <input matInput [(ngModel)]="paymentAmount[dude]" name="amount" type="number" placeholder="Amount (CHF)" required>
-          </mat-form-field>
-          <button mat-raised-button (click)="pay(dude);" [disabled]="!payBackForm.form.valid">Save</button>
-        </form>
-      </mat-list-item>
-    </mat-list>
-
-    <pre>
-      Selected dude: {{ selectedDude }}
-
-      Debts: {{ debtByRelation | json }}
-    </pre>
 
   </mat-card-content>
 </mat-card>
