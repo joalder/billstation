@@ -33,6 +33,9 @@ class Bill(models.Model):
     affected_dudes = models.ManyToManyField('Dude', related_name='bills_to_pay')
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-created']
+
     def total_remaining(self):
         payments = self.payment_set.all().aggregate(Sum('amount'))
         already_paid = payments['amount__sum'] if payments['amount__sum'] else 0
@@ -88,6 +91,9 @@ class Payment(models.Model):
     at = models.DateField(default=timezone.now().date)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
     created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created']
 
     def __str__(self):
         return '{0} by {1}'.format(self.amount, self.by)
