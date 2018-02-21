@@ -30,9 +30,7 @@
         </mat-select>
       </mat-form-field>
 
-      <button mat-raised-button (click)="saveBill();" [disabled]="!billForm.form.valid">Save</button>
-
-      <pre>{{ inputBill | json }}</pre>
+      <button mat-raised-button (click)="saveBill()" [disabled]="!billForm.valid">Save</button>
     </form>
   </mat-card-content>
 </mat-card>
