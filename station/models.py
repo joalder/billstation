@@ -35,6 +35,7 @@ class Bill(models.Model):
     def total_remaining(self):
         payments = self.payment_set.all().aggregate(Sum('amount'))
         already_paid = payments['amount__sum'] if payments['amount__sum'] else 0
+
         result = (Decimal(self.amount) - already_paid).quantize(TWOPLACES)
         if result < Decimal(0):
             return Decimal(0)
@@ -54,6 +55,7 @@ class Bill(models.Model):
             getcontext().rounding = ROUND_HALF_DOWN
         result = (Decimal(self.amount) / self.affected_dudes.count()).quantize(TWOPLACES)
         getcontext().rounding = rounding_before
+
         return result
 
     def remaining(self, dude):
@@ -62,6 +64,7 @@ class Bill(models.Model):
 
         payments = self.payment_set.filter(by=dude).aggregate(Sum('amount'))
         already_paid = payments['amount__sum'] if payments['amount__sum'] else 0
+
         result = (self.share(dude) - already_paid).quantize(TWOPLACES)
         if result < Decimal(0):
             return Decimal(0)
@@ -73,7 +76,7 @@ class Bill(models.Model):
 
     def save(self, **kwargs):
         super(Bill, self).save(**kwargs)
-        if self.owner in self.affected_dudes.all():
+        if self.pk is None and self.owner in self.affected_dudes.all():
             Payment.objects.create(bill=self, by=self.owner, amount=self.share(self.owner))
 
     def __str__(self):

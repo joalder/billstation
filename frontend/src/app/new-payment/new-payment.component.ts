@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {PaymentService} from "../payment.service";
+import {Payment, PaymentService} from "../payment.service";
 import {Dude, DudeService} from "../dude.service";
 import {FormControl} from '@angular/forms';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-new-payment',
@@ -18,7 +19,9 @@ export class NewPaymentComponent implements OnInit {
 
   loaded: Boolean = false;
 
-  constructor(private dudeService: DudeService, private paymentService: PaymentService) {
+  constructor(private dudeService: DudeService,
+              private paymentService: PaymentService,
+              public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -37,12 +40,25 @@ export class NewPaymentComponent implements OnInit {
   }
 
   renderDude(dude: Dude): String {
-    return dude.name;
+    return dude ? dude.name : '';
   }
 
   submitPayment(): void {
     this.paymentService.savePaymentByAmount(this.sender, this.receiver, this.paymentAmount).subscribe(
-      (response) => console.log(response)
-    );
+      (response) => {
+        for (let payment of response.paidBills) {
+
+          this.snackBar.open(
+            "Payment of " + payment.amount + " to " + response.receiver.name + ".",
+            'Dismiss',
+            {duration: 1500});
+        }
+      }, (response) => {
+        this.snackBar.open(
+          "Failed to make payment to " + this.sender.name,
+          'Dismiss',
+          {duration: 1500});
+      });
   }
 }
+

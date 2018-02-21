@@ -14,10 +14,10 @@ export class PaymentService {
     return this.http.post<Payment>(this.billUrl, payment);
   }
 
-  savePaymentByAmount(sender: Dude, receiver: Dude, amount: number): Observable<Response> {
+  savePaymentByAmount(sender: Dude, receiver: Dude, amount: number): Observable<PaymentByAmountResponse> {
     let url: string = this.billUrl + sender.id + '/' + receiver.id + '/';
 
-    return this.http.post<Response>(url, amount);
+    return this.http.post<PaymentByAmountResponse>(url, amount);
   }
 }
 
@@ -33,4 +33,18 @@ export class Payment {
   bill: string;
   amount: number;
   by: Dude
+}
+
+class PaymentByAmountResponse {
+  constructor(by: Dude, receiver: Dude, amount: number, paymentsMade: Payment[]) {
+    this.by = by;
+    this.receiver = receiver;
+    this.amount = amount;
+    this.paidBills = paymentsMade;
+  }
+
+  by: Dude;
+  receiver: Dude;
+  amount: number;
+  paidBills: Payment[];
 }
