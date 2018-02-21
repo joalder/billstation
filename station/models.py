@@ -2,6 +2,7 @@ from decimal import *
 
 from django.db import models
 from django.db.models import Sum
+from django.db.models.signals import m2m_changed
 from django.utils import timezone
 
 # Default precision of two decimal places
@@ -74,11 +75,6 @@ class Bill(models.Model):
     def is_paid(self):
         return self.total_remaining() <= Decimal(0)
 
-    def save(self, **kwargs):
-        super(Bill, self).save(**kwargs)
-        if self.pk is None and self.owner in self.affected_dudes.all():
-            Payment.objects.create(bill=self, by=self.owner, amount=self.share(self.owner))
-
     def __str__(self):
         return '{0} - {1}'.format(self.amount, self.description[:10])
 
@@ -95,3 +91,16 @@ class Payment(models.Model):
 
     def __str__(self):
         return '{0} by {1}'.format(self.amount, self.by)
+
+
+def bill_relations_changed(sender, instance, action, **kwargs):
+    if action != 'post_add':
+        return
+
+    amount_left = instance.share(instance.owner)
+
+    if instance.owner in instance.affected_dudes.all() and amount_left > 0:
+        Payment.objects.create(bill=instance, by=instance.owner, amount=amount_left)
+
+
+m2m_changed.connect(bill_relations_changed, sender=Bill.affected_dudes.through)

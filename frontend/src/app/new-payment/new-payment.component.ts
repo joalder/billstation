@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Payment, PaymentService} from "../payment.service";
+import {PaymentService} from "../payment.service";
 import {Dude, DudeService} from "../dude.service";
 import {FormControl} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';

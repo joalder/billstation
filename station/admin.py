@@ -8,7 +8,7 @@ class PaymentInline(admin.TabularInline):
 
 class BillAdmin(admin.ModelAdmin):
     date_hierarchy = 'date'
-    list_display = ('description', 'owner', 'amount', 'created', 'is_paid')
+    list_display = ('description', 'owner', 'created', 'is_paid', 'amount', 'total_remaining')
     inlines = [
         PaymentInline,
     ]
