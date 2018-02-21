@@ -82,3 +82,17 @@ def debt_by_relation(request, owner_id, debtor_id):
         "amount": amount,
         "relation": "{0} -> {1}".format(owner, debtor)
     })
+
+@api_view(['POST'])
+@renderer_classes((JSONRenderer,))
+def pay_by_amount(request, sender_id, receiver_id):
+    sender = Dude.objects.get(id=sender_id)
+    receiver = Dude.objects.get(id=receiver_id)
+
+    amount = request.data
+
+    return response.Response({
+        "sender": sender.name,
+        "receiver": receiver.name,
+        "got": amount
+    })

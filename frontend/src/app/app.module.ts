@@ -3,7 +3,7 @@ import {NgModule,} from '@angular/core';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatCardModule} from '@angular/material/card';
@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatListModule} from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {AppComponent} from './app.component';
 import {DeptOverviewComponent} from './dept-overview/dept-overview.component';
@@ -63,7 +64,9 @@ export const DATE_FORMAT = {
     MatSelectModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
     MatListModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'csrftoken',
