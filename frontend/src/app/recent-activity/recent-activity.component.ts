@@ -13,20 +13,21 @@ export class RecentActivityComponent implements OnInit {
 
   // private recentActivities:any[] = [];
   private billUrl: string = "api/bills/";
-  private bills:Bill[] = [];
-  private loading:boolean = true;
+  private bills: Bill[] = [];
+  public loading: boolean = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit() {
     this.initData();
   }
 
   //fetch bills
-  initData () {
+  initData() {
     this.loading = true;
     this.http.get<Bill[]>(this.billUrl)
-      .subscribe((bills) =>{
+      .subscribe((bills) => {
         this.bills = bills;
         this.loading = false;
       })
