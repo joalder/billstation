@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'api/debt/(?P<owner_id>[0-9])/(?P<debtor_id>[0-9])/$', debt_by_relation),
+    # TODO: Add url
     url(r'api/', include(router.urls)),
     url(r'swagger-schema/', schema_view),
     url(r'swagger-schema-raw/', schema_view_raw),

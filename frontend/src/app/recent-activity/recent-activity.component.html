@@ -1,4 +1,23 @@
 <mat-card>
-  <mat-card-title>Recent Activity</mat-card-title>
-  <mat-card-content></mat-card-content>
+  <mat-card-title>Recent activity</mat-card-title>
+  <mat-card-content>
+    <!-- Loader -->
+    <div *ngIf="loading">
+      Loading recent activities
+    </div>
+    <!-- Content -->
+    <div fxFlex="grow" fxLayout="column">
+      <mat-list *ngIf="!loading">
+        <mat-list-item *ngFor="let bill of bills | slice:0:5"
+                       fxLayout="column">
+          <div fxFlex="grow"
+               fxLayout="row"
+               fxLayoutAlign="space-between center">
+            <div>{{bill.description}}</div>
+            <div>{{bill.created | date:'short':''}}</div>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </div>
+  </mat-card-content>
 </mat-card>

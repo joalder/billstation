@@ -82,3 +82,5 @@ def debt_by_relation(request, owner_id, debtor_id):
         "amount": amount,
         "relation": "{0} -> {1}".format(owner, debtor)
     })
+
+# TODO: Create custom class for query by datetime
