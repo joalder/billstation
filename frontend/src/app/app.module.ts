@@ -28,6 +28,7 @@ import {PaymentService} from "./payment.service";
 
 import {MatNativeDateModule} from '@angular/material';
 import {DebtService} from "./debt.service";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
@@ -67,6 +68,7 @@ export const DATE_FORMAT = {
     MatAutocompleteModule,
     MatListModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'csrftoken',
