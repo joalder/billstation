@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <form #viewPointForm="ngForm">
+    <mat-form-field>
+      <mat-select matInput [(value)]="selectedDude" (change)="dudeSelected()"  name="pov" placeholder="View Point" required>
+        <mat-option *ngFor="let dude of dudes" [value]="dude">
+          {{ dude.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <span>Billstation</span>
+</mat-toolbar>

@@ -13,14 +13,6 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-select [(ngModel)]="inputBill.owner" name="owner" placeholder="Owner" required>
-          <mat-option *ngFor="let dude of dudes" [value]="dude.url">
-            {{ dude.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
         <input matInput [(ngModel)]="inputBill.amount" name="amount" type="number" placeholder="Amount (CHF)" required>
       </mat-form-field>
 

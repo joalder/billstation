@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Bill, BillService} from "../bill.service";
-import {Payment, PaymentService} from "../payment.service";
-import {Dude} from "../dude.service";
+import {Payment, PaymentService} from "../payments/payment.service";
+import {Dude} from "../dude/dude.service";
 
 @Component({
   selector: 'app-recent-activity',

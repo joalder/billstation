@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".layout-card {\r\n  margin: 3px;\r\n  min-width: 300px;\r\n  max-width: 90vw;\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n}\r\n\r\n.layout-card-container {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n}\r\n", ""]);
+exports.push([module.i, ".layout-card {\r\n  margin: 3px;\r\n  min-width: 300px;\r\n  max-width: 90vw;\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n}\r\n\r\n.layout-card-container {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n}\r\n\r\n.nav-toolbar {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"layout-card-container\">\n  <app-new-bill class=\"layout-card\" [dudes]=\"dudes\"></app-new-bill>\n  <app-new-payment class=\"layout-card\" [dudes]=\"dudes\"></app-new-payment>\n  <app-debt-overview class=\"layout-card\" [dudes]=\"dudes\"></app-debt-overview>\n  <app-recent-activity class=\"layout-card\" [dudes]=\"dudes\"></app-recent-activity>\n</div>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"layout-card-container\">\n  <app-toolbar class=\"nav-toolbar\" [dudes]=\"dudes\"></app-toolbar>\n\n  <app-new-bill class=\"layout-card\" [dudes]=\"dudes\"></app-new-bill>\n  <app-new-payment class=\"layout-card\" [dudes]=\"dudes\"></app-new-payment>\n  <app-debt-overview class=\"layout-card\" [dudes]=\"dudes\"></app-debt-overview>\n  <app-recent-activity class=\"layout-card\" [dudes]=\"dudes\"></app-recent-activity>\n</div>\n"
 
 /***/ }),
 
@@ -48,7 +48,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -82,7 +82,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_service__["a" /* DudeService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */]])
 ], AppComponent);
 
 
@@ -116,19 +116,23 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__recent_activity_recent_activity_component__ = __webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__ = __webpack_require__("../../../../../src/app/new-bill/new-bill.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__ = __webpack_require__("../../../../../src/app/new-payment/new-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_flex_layout__ = __webpack_require__("../../../flex-layout/esm2015/flex-layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__ = __webpack_require__("../../../../../src/app/find-dude.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__ = __webpack_require__("../../../../../src/app/dude/find-dude.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__payments_remove_payments_for_own_bill_pipe__ = __webpack_require__("../../../../../src/app/payments/remove-payments-for-own-bill.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__toolbar_toolbar_component__ = __webpack_require__("../../../../../src/app/toolbar/toolbar.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -183,7 +187,9 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__recent_activity_recent_activity_component__["a" /* RecentActivityComponent */],
             __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__["a" /* NewBillComponent */],
             __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__["a" /* NewPaymentComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__["a" /* FindDudePipe */],
+            __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__["a" /* FindDudePipe */],
+            __WEBPACK_IMPORTED_MODULE_29__payments_remove_payments_for_own_bill_pipe__["a" /* RemovePaymentsForOwnBillPipe */],
+            __WEBPACK_IMPORTED_MODULE_30__toolbar_toolbar_component__["a" /* ToolbarComponent */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -196,6 +202,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_9__angular_material_datepicker__["a" /* MatDatepickerModule */],
             __WEBPACK_IMPORTED_MODULE_25__angular_material__["e" /* MatNativeDateModule */],
             __WEBPACK_IMPORTED_MODULE_12__angular_material_select__["a" /* MatSelectModule */],
+            __WEBPACK_IMPORTED_MODULE_25__angular_material__["g" /* MatToolbarModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material_button__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_14__angular_material_snack_bar__["b" /* MatSnackBarModule */],
             __WEBPACK_IMPORTED_MODULE_16__angular_material_autocomplete__["a" /* MatAutocompleteModule */],
@@ -209,7 +216,7 @@ AppModule = __decorate([
             }),
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_22__dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__debt_service__["a" /* DebtService */],
+            __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__debt_service__["a" /* DebtService */],
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["c" /* DateAdapter */], useClass: __WEBPACK_IMPORTED_MODULE_11__angular_material_moment_adapter__["a" /* MomentDateAdapter */], deps: [__WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */]] },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["f" /* MAT_DATE_FORMATS */], useValue: DATE_FORMAT },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */], useValue: 'en-US' },
@@ -230,6 +237,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BillService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm2015/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -241,16 +249,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 let BillService = class BillService {
     constructor(http) {
         this.http = http;
         this.billUrl = "api/bills/";
+        this.billSelectionSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.billSelectionAnnounced$ = this.billSelectionSource.asObservable();
     }
     getBills() {
         return this.http.get(this.billUrl);
     }
     saveBill(bill) {
         return this.http.post(this.billUrl, bill);
+    }
+    newBill(newBill) {
+        this.billSelectionSource.next(newBill);
     }
 };
 BillService = __decorate([
@@ -287,7 +301,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/debt-overview/debt-overview.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat-card-content>\n\n    <form #viewPointForm=\"ngForm\">\n      <mat-form-field>\n        <mat-select matInput [(value)]=\"viewPoint\" (change)=\"viewPointChanged()\"  name=\"pov\" placeholder=\"View Point\" required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude\">\n            {{ dude.name }}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n    </form>\n\n    <mat-list dense>\n      <mat-list-item *ngFor=\"let debt of debtList\">{{ debt.owner.name }}: {{ debt.amount }} ({{ debt.relation }})</mat-list-item>\n    </mat-list>\n  </mat-card-content>\n</mat-card>\n"
+module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat-card-content>\n    <mat-list dense>\n      <mat-list-item *ngFor=\"let debt of debtList\">{{ debt.owner.name }}: {{ debt.amount }} ({{ debt.relation }})</mat-list-item>\n    </mat-list>\n  </mat-card-content>\n</mat-card>\n"
 
 /***/ }),
 
@@ -297,8 +311,10 @@ module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DebtOverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -311,19 +327,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 let DebtOverviewComponent = class DebtOverviewComponent {
-    constructor(dudeService, debtService) {
+    constructor(dudeService, paymentService, billService, debtService) {
         this.dudeService = dudeService;
+        this.paymentService = paymentService;
+        this.billService = billService;
         this.debtService = debtService;
         this.dudes = [];
         this.debtList = [];
     }
     ngOnInit() {
+        this.dudeSubscription = this.dudeService.dudeSelectionAnnounced$
+            .subscribe(dude => {
+            this.viewPoint = dude;
+            this.updateDebtOverview();
+        });
+        this.paymentSubscription = this.paymentService.newPaymentAnnounced$
+            .subscribe(() => {
+            this.updateDebtOverview();
+        });
+        this.billSubscription = this.billService.billSelectionAnnounced$
+            .subscribe(() => {
+            this.updateDebtOverview();
+        });
+    }
+    ngOnDestroy() {
+        this.dudeSubscription.unsubscribe();
+        this.paymentSubscription.unsubscribe();
+        this.billSubscription.unsubscribe();
     }
     getDudesExceptSelected() {
         return this.dudes.filter(dude => dude !== this.viewPoint);
     }
-    viewPointChanged() {
+    updateDebtOverview() {
         this.debtList = [];
         for (let dude of this.getDudesExceptSelected()) {
             this.debtService.getDebt(dude.id, this.viewPoint.id)
@@ -343,7 +381,10 @@ DebtOverviewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.html"),
         styles: [__webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */],
+        __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */],
+        __WEBPACK_IMPORTED_MODULE_4__bill_service__["b" /* BillService */],
+        __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
 ], DebtOverviewComponent);
 
 
@@ -391,13 +432,14 @@ class Debt {
 
 /***/ }),
 
-/***/ "../../../../../src/app/dude.service.ts":
+/***/ "../../../../../src/app/dude/dude.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DudeService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm2015/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -409,13 +451,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 let DudeService = class DudeService {
     constructor(http) {
         this.http = http;
         this.dudesUrl = 'api/dudes/';
+        this.dudeSelectionSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.dudeSelectionAnnounced$ = this.dudeSelectionSource.asObservable();
     }
     getDudes() {
         return this.http.get(this.dudesUrl);
+    }
+    selectDude(selectedDude) {
+        this.dudeSelectionSource.next(selectedDude);
     }
 };
 DudeService = __decorate([
@@ -431,7 +479,7 @@ class Dude {
 
 /***/ }),
 
-/***/ "../../../../../src/app/find-dude.pipe.ts":
+/***/ "../../../../../src/app/dude/find-dude.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -484,7 +532,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/new-bill/new-bill.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <mat-card-title>New Bill</mat-card-title>\n  <mat-card-content>\n    <form class=\"new-bill-form\" #billForm=\"ngForm\">\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.description\" name=\"description\" placeholder=\"Description (Where/What)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.date\" name=\"date\" [matDatepicker]=\"picker\" placeholder=\"Date\" required>\n        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n        <mat-datepicker #picker></mat-datepicker>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.owner\" name=\"owner\" placeholder=\"Owner\" required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">\n            {{ dude.name }}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.amount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.affected_dudes\" name=\"affectedDudes\" placeholder=\"Beneficiary\" multiple required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">{{dude.name}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <button mat-raised-button (click)=\"saveBill()\" [disabled]=\"!billForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
+module.exports = "<mat-card>\n  <mat-card-title>New Bill</mat-card-title>\n  <mat-card-content>\n    <form class=\"new-bill-form\" #billForm=\"ngForm\">\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.description\" name=\"description\" placeholder=\"Description (Where/What)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.date\" name=\"date\" [matDatepicker]=\"picker\" placeholder=\"Date\" required>\n        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n        <mat-datepicker #picker></mat-datepicker>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.amount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.affected_dudes\" name=\"affectedDudes\" placeholder=\"Beneficiary\" multiple required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">{{dude.name}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <button mat-raised-button (click)=\"saveBill()\" [disabled]=\"!billForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
 
 /***/ }),
 
@@ -494,10 +542,11 @@ module.exports = "<mat-card>\n  <mat-card-title>New Bill</mat-card-title>\n  <ma
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewBillComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_snack_bar__ = __webpack_require__("../../../material/esm2015/snack-bar.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__("../../../../moment/moment.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material_snack_bar__ = __webpack_require__("../../../material/esm2015/snack-bar.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__("../../../../moment/moment.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -511,21 +560,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 let NewBillComponent = class NewBillComponent {
-    constructor(billService, snackBar) {
+    constructor(billService, dudeService, snackBar) {
         this.billService = billService;
+        this.dudeService = dudeService;
         this.snackBar = snackBar;
     }
     ngOnInit() {
         this.loadEmptyBill();
+        this.dudeSelectionSubscription = this.dudeService.dudeSelectionAnnounced$
+            .subscribe(dude => {
+            this.selectedDude = dude;
+            this.inputBill.owner = dude.url.toString();
+        });
+    }
+    ngOnDestroy() {
+        this.dudeSelectionSubscription.unsubscribe();
     }
     loadEmptyBill() {
-        this.inputBill = new __WEBPACK_IMPORTED_MODULE_1__bill_service__["a" /* Bill */]();
-        this.inputBill.date = __WEBPACK_IMPORTED_MODULE_3_moment__().format('YYYY-MM-DD');
+        this.inputBill = new __WEBPACK_IMPORTED_MODULE_2__bill_service__["a" /* Bill */]();
+        this.inputBill.owner = this.selectedDude ? this.selectedDude.url.toString() : '';
+        this.inputBill.date = __WEBPACK_IMPORTED_MODULE_4_moment__().format('YYYY-MM-DD');
     }
     saveBill() {
         // Nasty way of forcing it to be date only,
-        this.inputBill.date = __WEBPACK_IMPORTED_MODULE_3_moment__(this.inputBill.date).format('YYYY-MM-DD');
+        this.inputBill.date = __WEBPACK_IMPORTED_MODULE_4_moment__(this.inputBill.date).format('YYYY-MM-DD');
         this.billService.saveBill(this.inputBill).subscribe(bill => {
             this.snackBar.open("Bill " + this.inputBill.description + " for " + this.inputBill.amount + " CHF has been added", 'Dismiss', { duration: 1500 });
             this.loadEmptyBill();
@@ -542,8 +602,9 @@ NewBillComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/new-bill/new-bill.component.html"),
         styles: [__webpack_require__("../../../../../src/app/new-bill/new-bill.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__bill_service__["b" /* BillService */],
-        __WEBPACK_IMPORTED_MODULE_2__angular_material_snack_bar__["a" /* MatSnackBar */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */],
+        __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */],
+        __WEBPACK_IMPORTED_MODULE_3__angular_material_snack_bar__["a" /* MatSnackBar */]])
 ], NewBillComponent);
 
 
@@ -571,7 +632,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/new-payment/new-payment.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <mat-card-title>New payment</mat-card-title>\n  <mat-card-content>\n    <form #paymentForm=\"ngForm\">\n      <mat-form-field>\n        <mat-select matInput [(value)]=\"sender\" name=\"owner\" placeholder=\"View Point\" required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude\">\n            {{ dude.name }}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input type=\"text\"\n               matInput\n               [formControl]=\"dudeAutoComplete\"\n               [(ngModel)]=\"receiver\"\n               [matAutocomplete]=\"auto\"\n               placeholder=\"Receiver\"\n               required>\n      </mat-form-field>\n\n      <mat-autocomplete #auto=\"matAutocomplete\" [displayWith]=\"renderDude\">\n        <mat-option *ngFor=\"let dude of getDudesExceptSelected()\" [value]=\"dude\">\n          {{ dude.name }}\n        </mat-option>\n      </mat-autocomplete>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"paymentAmount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <button mat-raised-button type=\"submit\" (click)=\"submitPayment()\" [disabled]=\"!paymentForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
+module.exports = "<mat-card>\n  <mat-card-title>New payment</mat-card-title>\n  <mat-card-content>\n    <form #paymentForm=\"ngForm\">\n      <mat-form-field>\n        <input type=\"text\"\n               matInput\n               [formControl]=\"dudeAutoComplete\"\n               [(ngModel)]=\"receiver\"\n               [matAutocomplete]=\"auto\"\n               placeholder=\"Receiver\"\n               required>\n      </mat-form-field>\n\n      <mat-autocomplete #auto=\"matAutocomplete\" [displayWith]=\"renderDude\">\n        <mat-option *ngFor=\"let dude of getDudesExceptSelected()\" [value]=\"dude\">\n          {{ dude.name }}\n        </mat-option>\n      </mat-autocomplete>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"paymentAmount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <button mat-raised-button type=\"submit\" (click)=\"submitPayment()\" [disabled]=\"!paymentForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
 
 /***/ }),
 
@@ -581,9 +642,10 @@ module.exports = "<mat-card>\n  <mat-card-title>New payment</mat-card-title>\n  
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewPaymentComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm2015/forms.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__("../../../forms/esm2015/forms.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -597,16 +659,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 let NewPaymentComponent = class NewPaymentComponent {
-    constructor(paymentService, snackBar) {
+    constructor(dudeService, paymentService, snackBar) {
+        this.dudeService = dudeService;
         this.paymentService = paymentService;
         this.snackBar = snackBar;
         this.dudes = [];
         this.paymentAmount = 0;
-        this.dudeAutoComplete = new __WEBPACK_IMPORTED_MODULE_2__angular_forms__["b" /* FormControl */]();
+        this.dudeAutoComplete = new __WEBPACK_IMPORTED_MODULE_3__angular_forms__["b" /* FormControl */]();
         this.loaded = false;
     }
     ngOnInit() {
+        this.dudeService.dudeSelectionAnnounced$
+            .subscribe(dude => this.sender = dude);
     }
     getDudesExceptSelected() {
         return this.dudes.filter(dude => dude !== this.sender);
@@ -618,6 +684,7 @@ let NewPaymentComponent = class NewPaymentComponent {
         this.paymentService.savePaymentByAmount(this.sender, this.receiver, this.paymentAmount).subscribe((response) => {
             for (let payment of response.paidBills) {
                 this.snackBar.open("Payment of " + payment.amount + " to " + response.receiver.name + ".", 'Dismiss', { duration: 1500 });
+                this.paymentService.newPayment(payment);
             }
         }, (response) => {
             this.snackBar.open("Failed to make payment to " + this.sender.name, 'Dismiss', { duration: 1500 });
@@ -634,21 +701,23 @@ NewPaymentComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/new-payment/new-payment.component.html"),
         styles: [__webpack_require__("../../../../../src/app/new-payment/new-payment.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__payment_service__["a" /* PaymentService */],
-        __WEBPACK_IMPORTED_MODULE_3__angular_material__["f" /* MatSnackBar */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__dude_dude_service__["a" /* DudeService */],
+        __WEBPACK_IMPORTED_MODULE_1__payments_payment_service__["a" /* PaymentService */],
+        __WEBPACK_IMPORTED_MODULE_4__angular_material__["f" /* MatSnackBar */]])
 ], NewPaymentComponent);
 
 
 
 /***/ }),
 
-/***/ "../../../../../src/app/payment.service.ts":
+/***/ "../../../../../src/app/payments/payment.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm2015/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -660,10 +729,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 let PaymentService = class PaymentService {
     constructor(http) {
         this.http = http;
         this.paymentUrl = "api/payments/";
+        this.newPaymentSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.newPaymentAnnounced$ = this.newPaymentSource.asObservable();
     }
     getPayments() {
         return this.http.get(this.paymentUrl);
@@ -675,6 +747,9 @@ let PaymentService = class PaymentService {
         let url = this.paymentUrl + sender.id + '/' + receiver.id + '/';
         return this.http.post(url, amount);
     }
+    newPayment(newPayment) {
+        this.newPaymentSource.next(newPayment);
+    }
 };
 PaymentService = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["y" /* Injectable */])(),
@@ -682,11 +757,12 @@ PaymentService = __decorate([
 ], PaymentService);
 
 class Payment {
-    constructor(at, bill, amount, by) {
+    constructor(at, bill, amount, by, forOwnBill) {
         this.at = at;
         this.bill = bill;
         this.amount = amount;
         this.by = by;
+        this.for_own_bill = forOwnBill;
     }
 }
 /* unused harmony export Payment */
@@ -699,6 +775,34 @@ class PaymentByAmountResponse {
         this.paidBills = paymentsMade;
     }
 }
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/payments/remove-payments-for-own-bill.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RemovePaymentsForOwnBillPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+let RemovePaymentsForOwnBillPipe = class RemovePaymentsForOwnBillPipe {
+    transform(value, args) {
+        return value.filter(payment => !payment.for_own_bill);
+    }
+};
+RemovePaymentsForOwnBillPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Pipe */])({
+        name: 'removePaymentsForOwnBill'
+    })
+], RemovePaymentsForOwnBillPipe);
+
 
 
 /***/ }),
@@ -724,7 +828,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/recent-activity/recent-activity.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingBills\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ (dudes | findDude:bill.owner).name }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingPayments\">\r\n        <mat-list-item *ngFor=\"let payment of payments | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ (dudes | findDude:payment.by).name }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingBills\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ (dudes | findDude:bill.owner).name }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingPayments\">\r\n        <mat-list-item *ngFor=\"let payment of payments | removePaymentsForOwnBill | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ (dudes | findDude:payment.by).name }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
 
 /***/ }),
 
@@ -736,7 +840,7 @@ module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-titl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -776,9 +880,6 @@ let RecentActivityComponent = class RecentActivityComponent {
             this.loadingPayments = false;
         });
     }
-    findDude(id) {
-        return this.dudes.find(dude => dude.url === id);
-    }
 };
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(),
@@ -790,8 +891,78 @@ RecentActivityComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.html"),
         styles: [__webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */]])
 ], RecentActivityComponent);
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/toolbar/toolbar.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/toolbar/toolbar.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar>\n  <form #viewPointForm=\"ngForm\">\n    <mat-form-field>\n      <mat-select matInput [(value)]=\"selectedDude\" (change)=\"dudeSelected()\"  name=\"pov\" placeholder=\"View Point\" required>\n        <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude\">\n          {{ dude.name }}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n  </form>\n\n  <span>Billstation</span>\n</mat-toolbar>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/toolbar/toolbar.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ToolbarComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+let ToolbarComponent = class ToolbarComponent {
+    constructor(dudeService) {
+        this.dudeService = dudeService;
+    }
+    ngOnInit() {
+    }
+    dudeSelected() {
+        this.dudeService.selectDude(this.selectedDude);
+    }
+};
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(),
+    __metadata("design:type", Array)
+], ToolbarComponent.prototype, "dudes", void 0);
+ToolbarComponent = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+        selector: 'app-toolbar',
+        template: __webpack_require__("../../../../../src/app/toolbar/toolbar.component.html"),
+        styles: [__webpack_require__("../../../../../src/app/toolbar/toolbar.component.css")]
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */]])
+], ToolbarComponent);
 
 
 

@@ -43,7 +43,7 @@ class BillSerializer(serializers.HyperlinkedModelSerializer):
 class PaymentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Payment
-        fields = ('id', 'url', 'bill', 'by', 'at', 'amount', 'created')
+        fields = ('id', 'url', 'bill', 'by', 'at', 'amount', 'created', 'for_own_bill')
 
 
 # ViewSets define the view behavior.
