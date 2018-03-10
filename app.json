@@ -5,7 +5,7 @@
   "repository": "https://github.com/joalder/billstation/",
 
   "scripts": {
-    "postdeploy": "python manage.py collectstatic"
+    "postdeploy": "./postdeploy.sh"
   },
 
   "env": {
