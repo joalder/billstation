@@ -31,14 +31,14 @@ export class Payment {
     this.bill = bill;
     this.amount = amount;
     this.by = by;
-    this.forOwnBill = forOwnBill;
+    this.for_own_bill = forOwnBill;
   }
 
   at: Date;
   bill: string;
   amount: number;
   by: Dude;
-  forOwnBill: Boolean;
+  for_own_bill: Boolean;
 }
 
 class PaymentByAmountResponse {

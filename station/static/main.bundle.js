@@ -118,12 +118,12 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__ = __webpack_require__("../../../../../src/app/new-payment/new-payment.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__dude_debt_service__ = __webpack_require__("../../../../../src/app/dude/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_flex_layout__ = __webpack_require__("../../../flex-layout/esm2015/flex-layout.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__ = __webpack_require__("../../../../../src/app/dude/find-dude.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__remove_payments_for_own_bill_pipe__ = __webpack_require__("../../../../../src/app/remove-payments-for-own-bill.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__payments_remove_payments_for_own_bill_pipe__ = __webpack_require__("../../../../../src/app/payments/remove-payments-for-own-bill.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -186,7 +186,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__["a" /* NewBillComponent */],
             __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__["a" /* NewPaymentComponent */],
             __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__["a" /* FindDudePipe */],
-            __WEBPACK_IMPORTED_MODULE_29__remove_payments_for_own_bill_pipe__["a" /* RemovePaymentsForOwnBillPipe */],
+            __WEBPACK_IMPORTED_MODULE_29__payments_remove_payments_for_own_bill_pipe__["a" /* RemovePaymentsForOwnBillPipe */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -212,7 +212,7 @@ AppModule = __decorate([
             }),
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__dude_debt_service__["a" /* DebtService */],
+            __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__debt_service__["a" /* DebtService */],
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["c" /* DateAdapter */], useClass: __WEBPACK_IMPORTED_MODULE_11__angular_material_moment_adapter__["a" /* MomentDateAdapter */], deps: [__WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */]] },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["f" /* MAT_DATE_FORMATS */], useValue: DATE_FORMAT },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */], useValue: 'en-US' },
@@ -301,7 +301,7 @@ module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DebtOverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dude_debt_service__ = __webpack_require__("../../../../../src/app/dude/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -346,14 +346,14 @@ DebtOverviewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.html"),
         styles: [__webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__dude_debt_service__["a" /* DebtService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
 ], DebtOverviewComponent);
 
 
 
 /***/ }),
 
-/***/ "../../../../../src/app/dude/debt.service.ts":
+/***/ "../../../../../src/app/debt.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -584,7 +584,7 @@ module.exports = "<mat-card>\n  <mat-card-title>New payment</mat-card-title>\n  
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NewPaymentComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm2015/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -637,7 +637,7 @@ NewPaymentComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/new-payment/new-payment.component.html"),
         styles: [__webpack_require__("../../../../../src/app/new-payment/new-payment.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__payment_service__["a" /* PaymentService */],
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__payments_payment_service__["a" /* PaymentService */],
         __WEBPACK_IMPORTED_MODULE_3__angular_material__["f" /* MatSnackBar */]])
 ], NewPaymentComponent);
 
@@ -645,7 +645,7 @@ NewPaymentComponent = __decorate([
 
 /***/ }),
 
-/***/ "../../../../../src/app/payment.service.ts":
+/***/ "../../../../../src/app/payments/payment.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -690,7 +690,7 @@ class Payment {
         this.bill = bill;
         this.amount = amount;
         this.by = by;
-        this.forOwnBill = forOwnBill;
+        this.for_own_bill = forOwnBill;
     }
 }
 /* unused harmony export Payment */
@@ -703,6 +703,34 @@ class PaymentByAmountResponse {
         this.paidBills = paymentsMade;
     }
 }
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/payments/remove-payments-for-own-bill.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RemovePaymentsForOwnBillPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+let RemovePaymentsForOwnBillPipe = class RemovePaymentsForOwnBillPipe {
+    transform(value, args) {
+        return value.filter(payment => !payment.for_own_bill);
+    }
+};
+RemovePaymentsForOwnBillPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Pipe */])({
+        name: 'removePaymentsForOwnBill'
+    })
+], RemovePaymentsForOwnBillPipe);
+
 
 
 /***/ }),
@@ -728,7 +756,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/recent-activity/recent-activity.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingBills\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ (dudes | findDude:bill.owner).name }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingPayments\">\r\n        <mat-list-item *ngFor=\"let payment of payments | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ (dudes | findDude:payment.by).name }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingBills\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ (dudes | findDude:bill.owner).name }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingPayments\">\r\n        <mat-list-item *ngFor=\"let payment of payments | removePaymentsForOwnBill | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ (dudes | findDude:payment.by).name }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
 
 /***/ }),
 
@@ -740,7 +768,7 @@ module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-titl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -791,36 +819,8 @@ RecentActivityComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.html"),
         styles: [__webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */]])
 ], RecentActivityComponent);
-
-
-
-/***/ }),
-
-/***/ "../../../../../src/app/remove-payments-for-own-bill.pipe.ts":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RemovePaymentsForOwnBillPipe; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-let RemovePaymentsForOwnBillPipe = class RemovePaymentsForOwnBillPipe {
-    transform(value, args) {
-        return null;
-    }
-};
-RemovePaymentsForOwnBillPipe = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Pipe */])({
-        name: 'removePaymentsForOwnBill'
-    })
-], RemovePaymentsForOwnBillPipe);
 
 
 

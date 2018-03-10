@@ -26,7 +26,7 @@
       <h2 mat-subheader>Payments</h2>
 
       <mat-list *ngIf="!loadingPayments">
-        <mat-list-item *ngFor="let payment of payments | slice:0:5"
+        <mat-list-item *ngFor="let payment of payments | removePaymentsForOwnBill | slice:0:5"
                        fxLayout="column">
           <div fxFlex="grow"
                fxLayout="row"

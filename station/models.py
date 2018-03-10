@@ -90,6 +90,7 @@ class Payment(models.Model):
     at = models.DateField(auto_now_add=True)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
     created = models.DateTimeField(auto_now_add=True)
+    for_own_bill = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created']
@@ -105,7 +106,7 @@ def bill_relations_changed(sender, instance, action, **kwargs):
     amount_left = instance.share(instance.owner)
 
     if instance.owner in instance.affected_dudes.all() and amount_left > 0:
-        Payment.objects.create(bill=instance, by=instance.owner, amount=amount_left)
+        Payment.objects.create(bill=instance, by=instance.owner, amount=amount_left, for_own_bill=True)
 
 
 m2m_changed.connect(bill_relations_changed, sender=Bill.affected_dudes.through)
