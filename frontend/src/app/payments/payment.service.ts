@@ -2,10 +2,12 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Dude} from "../dude/dude.service";
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class PaymentService {
   private paymentUrl: string = "api/payments/";
+  private newPaymentSource = new Subject<Payment>();
 
   constructor(private http: HttpClient) {
   }
@@ -22,6 +24,12 @@ export class PaymentService {
     let url: string = this.paymentUrl + sender.id + '/' + receiver.id + '/';
 
     return this.http.post<PaymentByAmountResponse>(url, amount);
+  }
+
+  newPaymentAnnounced$ = this.newPaymentSource.asObservable();
+
+  newPayment(newPayment: Payment) {
+    this.newPaymentSource.next(newPayment);
   }
 }
 

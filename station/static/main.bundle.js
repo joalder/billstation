@@ -306,6 +306,7 @@ module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -318,24 +319,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 let DebtOverviewComponent = class DebtOverviewComponent {
-    constructor(dudeService, debtService) {
+    constructor(dudeService, paymentService, debtService) {
         this.dudeService = dudeService;
+        this.paymentService = paymentService;
         this.debtService = debtService;
         this.dudes = [];
         this.debtList = [];
     }
     ngOnInit() {
-        this.dudeService.dudeSelectionAnnounced$
+        this.dudeSubscription = this.dudeService.dudeSelectionAnnounced$
             .subscribe(dude => {
             this.viewPoint = dude;
-            this.viewPointChanged();
+            this.updateDebtOverview();
         });
+        this.paymentSubscription = this.paymentService.newPaymentAnnounced$
+            .subscribe(() => {
+            this.updateDebtOverview();
+        });
+    }
+    ngOnDestroy() {
+        this.dudeSubscription.unsubscribe();
+        this.paymentSubscription.unsubscribe();
     }
     getDudesExceptSelected() {
         return this.dudes.filter(dude => dude !== this.viewPoint);
     }
-    viewPointChanged() {
+    updateDebtOverview() {
         this.debtList = [];
         for (let dude of this.getDudesExceptSelected()) {
             this.debtService.getDebt(dude.id, this.viewPoint.id)
@@ -355,7 +366,7 @@ DebtOverviewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.html"),
         styles: [__webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
 ], DebtOverviewComponent);
 
 
@@ -503,7 +514,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/new-bill/new-bill.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n  <mat-card-title>New Bill</mat-card-title>\n  <mat-card-content>\n    <form class=\"new-bill-form\" #billForm=\"ngForm\">\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.description\" name=\"description\" placeholder=\"Description (Where/What)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.date\" name=\"date\" [matDatepicker]=\"picker\" placeholder=\"Date\" required>\n        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n        <mat-datepicker #picker></mat-datepicker>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.owner\" name=\"owner\" placeholder=\"Owner\" required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">\n            {{ dude.name }}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.amount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.affected_dudes\" name=\"affectedDudes\" placeholder=\"Beneficiary\" multiple required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">{{dude.name}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <button mat-raised-button (click)=\"saveBill()\" [disabled]=\"!billForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
+module.exports = "<mat-card>\n  <mat-card-title>New Bill</mat-card-title>\n  <mat-card-content>\n    <form class=\"new-bill-form\" #billForm=\"ngForm\">\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.description\" name=\"description\" placeholder=\"Description (Where/What)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.date\" name=\"date\" [matDatepicker]=\"picker\" placeholder=\"Date\" required>\n        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n        <mat-datepicker #picker></mat-datepicker>\n      </mat-form-field>\n\n      <mat-form-field>\n        <input matInput [(ngModel)]=\"inputBill.amount\" name=\"amount\" type=\"number\" placeholder=\"Amount (CHF)\" required>\n      </mat-form-field>\n\n      <mat-form-field>\n        <mat-select [(ngModel)]=\"inputBill.affected_dudes\" name=\"affectedDudes\" placeholder=\"Beneficiary\" multiple required>\n          <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude.url\">{{dude.name}}</mat-option>\n        </mat-select>\n      </mat-form-field>\n\n      <button mat-raised-button (click)=\"saveBill()\" [disabled]=\"!billForm.valid\">Save</button>\n    </form>\n  </mat-card-content>\n</mat-card>\n"
 
 /***/ }),
 
@@ -542,7 +553,7 @@ let NewBillComponent = class NewBillComponent {
         this.loadEmptyBill();
         this.dudeService.dudeSelectionAnnounced$
             .subscribe(dude => {
-            this.inputBill.owner = dude;
+            this.inputBill.owner = dude.url.toString();
         });
     }
     loadEmptyBill() {
@@ -650,6 +661,7 @@ let NewPaymentComponent = class NewPaymentComponent {
         this.paymentService.savePaymentByAmount(this.sender, this.receiver, this.paymentAmount).subscribe((response) => {
             for (let payment of response.paidBills) {
                 this.snackBar.open("Payment of " + payment.amount + " to " + response.receiver.name + ".", 'Dismiss', { duration: 1500 });
+                this.paymentService.newPayment(payment);
             }
         }, (response) => {
             this.snackBar.open("Failed to make payment to " + this.sender.name, 'Dismiss', { duration: 1500 });
@@ -682,6 +694,7 @@ NewPaymentComponent = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm2015/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -693,10 +706,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 let PaymentService = class PaymentService {
     constructor(http) {
         this.http = http;
         this.paymentUrl = "api/payments/";
+        this.newPaymentSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.newPaymentAnnounced$ = this.newPaymentSource.asObservable();
     }
     getPayments() {
         return this.http.get(this.paymentUrl);
@@ -707,6 +723,9 @@ let PaymentService = class PaymentService {
     savePaymentByAmount(sender, receiver, amount) {
         let url = this.paymentUrl + sender.id + '/' + receiver.id + '/';
         return this.http.post(url, amount);
+    }
+    newPayment(newPayment) {
+        this.newPaymentSource.next(newPayment);
     }
 };
 PaymentService = __decorate([

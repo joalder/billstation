@@ -47,6 +47,8 @@ export class NewPaymentComponent implements OnInit {
             "Payment of " + payment.amount + " to " + response.receiver.name + ".",
             'Dismiss',
             {duration: 1500});
+
+          this.paymentService.newPayment(payment);
         }
       }, (response) => {
         this.snackBar.open(
