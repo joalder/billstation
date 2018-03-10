@@ -3,7 +3,6 @@ from decimal import *
 from django.db import models
 from django.db.models import Sum
 from django.db.models.signals import m2m_changed
-from django.utils import timezone
 
 # Default precision of two decimal places
 getcontext().rounding = ROUND_HALF_UP
@@ -27,7 +26,7 @@ class Bill(models.Model):
     A bill at a specific point in time paid by the owner
     """
     description = models.CharField(max_length=30)
-    date = models.DateField(default=timezone.now().date)
+    date = models.DateField(auto_now_add=True)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
     owner = models.ForeignKey('Dude', related_name='my_bills')
     affected_dudes = models.ManyToManyField('Dude', related_name='bills_to_pay')
@@ -88,7 +87,7 @@ class Payment(models.Model):
     """
     bill = models.ForeignKey('Bill')
     by = models.ForeignKey('Dude')
-    at = models.DateField(default=timezone.now().date)
+    at = models.DateField(auto_now_add=True)
     amount = models.DecimalField(decimal_places=2, max_digits=12)
     created = models.DateTimeField(auto_now_add=True)
 
