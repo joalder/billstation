@@ -18,7 +18,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import {AppComponent} from './app.component';
-import {DeptOverviewComponent} from './dept-overview/dept-overview.component';
+import {DebtOverviewComponent} from './debt-overview/debt-overview.component';
 import {RecentActivityComponent} from './recent-activity/recent-activity.component';
 import {NewBillComponent} from './new-bill/new-bill.component';
 import {NewPaymentComponent} from './new-payment/new-payment.component';
@@ -47,7 +47,7 @@ export const DATE_FORMAT = {
 @NgModule({
   declarations: [
     AppComponent,
-    DeptOverviewComponent,
+    DebtOverviewComponent,
     RecentActivityComponent,
     NewBillComponent,
     NewPaymentComponent,

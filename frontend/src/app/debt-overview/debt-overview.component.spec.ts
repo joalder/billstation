@@ -2,15 +2,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {MatCardModule} from '@angular/material/card';
 
-import { DeptOverviewComponent } from './dept-overview.component';
+import { DebtOverviewComponent } from './debt-overview.component';
 
-describe('DeptOverviewComponent', () => {
-  let component: DeptOverviewComponent;
-  let fixture: ComponentFixture<DeptOverviewComponent>;
+describe('DebtOverviewComponent', () => {
+  let component: DebtOverviewComponent;
+  let fixture: ComponentFixture<DebtOverviewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeptOverviewComponent ],
+      declarations: [ DebtOverviewComponent ],
       imports: [
         MatCardModule,
       ],
@@ -19,7 +19,7 @@ describe('DeptOverviewComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeptOverviewComponent);
+    fixture = TestBed.createComponent(DebtOverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,7 +8,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MockRecentActivity,
-        MockDeptOverview,
+        MockdebtOverview,
         MockNewBill,
         MockNewPayment,
       ],
@@ -44,8 +44,8 @@ class MockNewPayment {
 }
 
 @Component({
-  selector: 'app-dept-overview',
+  selector: 'app-debt-overview',
   template: ''
 })
-class MockDeptOverview {
+class MockdebtOverview {
 }

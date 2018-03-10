@@ -5,11 +5,11 @@ import {Payment, PaymentService} from "../payment.service";
 import {FormControl} from '@angular/forms';
 
 @Component({
-  selector: 'app-dept-overview',
-  templateUrl: './dept-overview.component.html',
-  styleUrls: ['./dept-overview.component.css']
+  selector: 'app-debt-overview',
+  templateUrl: './debt-overview.component.html',
+  styleUrls: ['./debt-overview.component.css']
 })
-export class DeptOverviewComponent implements OnInit {
+export class DebtOverviewComponent implements OnInit {
 
   constructor() {
   }
