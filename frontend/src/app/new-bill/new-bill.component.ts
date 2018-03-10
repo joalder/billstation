@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Dude, DudeService} from "../dude.service";
 import {Bill, BillService} from "../bill.service";
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -10,22 +10,16 @@ import * as moment from 'moment';
   styleUrls: ['./new-bill.component.css']
 })
 export class NewBillComponent implements OnInit {
+  @Input()
   dudes: Dude[];
   inputBill: Bill;
 
-  constructor(private dudeService: DudeService,
-              private billService: BillService,
+  constructor(private billService: BillService,
               public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
-    this.getDudes();
     this.loadEmptyBill();
-  }
-
-  getDudes(): void {
-    this.dudeService.getDudes()
-      .subscribe(dudes => this.dudes = dudes);
   }
 
   loadEmptyBill(): void {

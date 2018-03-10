@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Debt} from "../debt.service";
+import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Bill} from "../bill.service";
-import {Subject} from "rxjs/Subject";
+import {Bill, BillService} from "../bill.service";
+import {Payment, PaymentService} from "../payment.service";
+import {Dude} from "../dude.service";
 
 @Component({
   selector: 'app-recent-activity',
@@ -11,26 +11,29 @@ import {Subject} from "rxjs/Subject";
 })
 export class RecentActivityComponent implements OnInit {
 
-  // private recentActivities:any[] = [];
-  private billUrl: string = "api/bills/";
-  private bills: Bill[] = [];
+  @Input()
+  public dudes: Dude[] = [];
+  public bills: Bill[] = [];
+  public payments: Payment[] = [];
   public loading: boolean = true;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private paymentService: PaymentService, private billService: BillService) {
   }
 
   ngOnInit() {
-    this.initData();
+    this.loadData();
   }
 
-  //fetch bills
-  initData() {
-    this.loading = true;
-    this.http.get<Bill[]>(this.billUrl)
-      .subscribe((bills) => {
-        this.bills = bills;
-        this.loading = false;
-      })
+  loadData() {
+    this.billService.getBills()
+      .subscribe(bills =>
+        this.bills = bills);
+
+    this.paymentService.getPayments()
+      .subscribe(payments =>
+        this.payments = payments);
+
+    this.loading = false;
   }
 
 }

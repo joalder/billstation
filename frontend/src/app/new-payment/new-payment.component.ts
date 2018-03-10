@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {PaymentService} from "../payment.service";
-import {Dude, DudeService} from "../dude.service";
+import {Dude} from "../dude.service";
 import {FormControl} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 
@@ -10,6 +10,7 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./new-payment.component.css']
 })
 export class NewPaymentComponent implements OnInit {
+  @Input()
   dudes: Dude[] = [];
   sender: Dude;
   receiver: Dude;
@@ -19,21 +20,13 @@ export class NewPaymentComponent implements OnInit {
 
   loaded: Boolean = false;
 
-  constructor(private dudeService: DudeService,
-              private paymentService: PaymentService,
+  constructor(private paymentService: PaymentService,
               public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
-    this.loadDudes();
   }
 
-  loadDudes(): void {
-    this.dudeService.getDudes()
-      .subscribe(dudes => {
-        this.dudes = dudes;
-      });
-  }
 
   getDudesExceptSelected(): Dude[] {
     return this.dudes.filter(dude => dude !== this.sender);

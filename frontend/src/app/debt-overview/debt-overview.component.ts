@@ -1,8 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Dude, DudeService} from "../dude.service";
 import {Debt, DebtService} from "../debt.service";
-import {Payment, PaymentService} from "../payment.service";
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-debt-overview',
@@ -10,6 +8,7 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./debt-overview.component.css']
 })
 export class DebtOverviewComponent implements OnInit {
+  @Input()
   dudes: Dude[] = [];
   viewPoint: Dude;
   debtList: Debt[] = [];
@@ -18,14 +17,6 @@ export class DebtOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadDudes();
-  }
-
-  loadDudes(): void {
-    this.dudeService.getDudes()
-      .subscribe(dudes => {
-        this.dudes = dudes;
-      });
   }
 
   getDudesExceptSelected(): Dude[] {

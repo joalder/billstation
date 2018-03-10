@@ -5,17 +5,21 @@ import {Dude} from "./dude.service";
 
 @Injectable()
 export class PaymentService {
-  private billUrl: string = "api/payments/";
+  private paymentUrl: string = "api/payments/";
 
   constructor(private http: HttpClient) {
   }
 
+  getPayments(): Observable<Payment[]> {
+    return this.http.get<Payment[]>(this.paymentUrl);
+  }
+
   savePayment(payment: Payment): Observable<Payment> {
-    return this.http.post<Payment>(this.billUrl, payment);
+    return this.http.post<Payment>(this.paymentUrl, payment);
   }
 
   savePaymentByAmount(sender: Dude, receiver: Dude, amount: number): Observable<PaymentByAmountResponse> {
-    let url: string = this.billUrl + sender.id + '/' + receiver.id + '/';
+    let url: string = this.paymentUrl + sender.id + '/' + receiver.id + '/';
 
     return this.http.post<PaymentByAmountResponse>(url, amount);
   }
