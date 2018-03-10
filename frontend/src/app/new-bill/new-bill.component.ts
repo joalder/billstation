@@ -1,5 +1,5 @@
 import {Component, OnInit, Input} from '@angular/core';
-import {Dude, DudeService} from "../dude.service";
+import {Dude, DudeService} from "../dude/dude.service";
 import {Bill, BillService} from "../bill.service";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as moment from 'moment';

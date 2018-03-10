@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Dude, DudeService} from "../dude.service";
+import {Dude, DudeService} from "../dude/dude.service";
 import {Debt, DebtService} from "../debt.service";
 
 @Component({

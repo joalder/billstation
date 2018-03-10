@@ -22,14 +22,15 @@ import {DebtOverviewComponent} from './debt-overview/debt-overview.component';
 import {RecentActivityComponent} from './recent-activity/recent-activity.component';
 import {NewBillComponent} from './new-bill/new-bill.component';
 import {NewPaymentComponent} from './new-payment/new-payment.component';
-import {DudeService} from "./dude.service";
+import {DudeService} from "./dude/dude.service";
 import {BillService} from "./bill.service";
-import {PaymentService} from "./payment.service";
+import {PaymentService} from "./payments/payment.service";
 
 import {MatNativeDateModule} from '@angular/material';
 import {DebtService} from "./debt.service";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import { FindDudePipe } from './find-dude.pipe';
+import { FindDudePipe } from './dude/find-dude.pipe';
+import { RemovePaymentsForOwnBillPipe } from './payments/remove-payments-for-own-bill.pipe';
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
@@ -53,6 +54,7 @@ export const DATE_FORMAT = {
     NewBillComponent,
     NewPaymentComponent,
     FindDudePipe,
+    RemovePaymentsForOwnBillPipe,
   ],
   imports: [
     BrowserModule,

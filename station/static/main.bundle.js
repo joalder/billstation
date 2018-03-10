@@ -48,7 +48,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -82,7 +82,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_service__["a" /* DudeService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */]])
 ], AppComponent);
 
 
@@ -116,19 +116,21 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__recent_activity_recent_activity_component__ = __webpack_require__("../../../../../src/app/recent-activity/recent-activity.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__ = __webpack_require__("../../../../../src/app/new-bill/new-bill.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__ = __webpack_require__("../../../../../src/app/new-payment/new-payment.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__payment_service__ = __webpack_require__("../../../../../src/app/payment.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__dude_debt_service__ = __webpack_require__("../../../../../src/app/dude/debt.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_flex_layout__ = __webpack_require__("../../../flex-layout/esm2015/flex-layout.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__ = __webpack_require__("../../../../../src/app/find-dude.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__ = __webpack_require__("../../../../../src/app/dude/find-dude.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__remove_payments_for_own_bill_pipe__ = __webpack_require__("../../../../../src/app/remove-payments-for-own-bill.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -183,7 +185,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__recent_activity_recent_activity_component__["a" /* RecentActivityComponent */],
             __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__["a" /* NewBillComponent */],
             __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__["a" /* NewPaymentComponent */],
-            __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__["a" /* FindDudePipe */],
+            __WEBPACK_IMPORTED_MODULE_28__dude_find_dude_pipe__["a" /* FindDudePipe */],
+            __WEBPACK_IMPORTED_MODULE_29__remove_payments_for_own_bill_pipe__["a" /* RemovePaymentsForOwnBillPipe */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -209,7 +212,7 @@ AppModule = __decorate([
             }),
         ],
         providers: [
-            __WEBPACK_IMPORTED_MODULE_22__dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__debt_service__["a" /* DebtService */],
+            __WEBPACK_IMPORTED_MODULE_22__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_23__bill_service__["b" /* BillService */], __WEBPACK_IMPORTED_MODULE_24__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_26__dude_debt_service__["a" /* DebtService */],
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["c" /* DateAdapter */], useClass: __WEBPACK_IMPORTED_MODULE_11__angular_material_moment_adapter__["a" /* MomentDateAdapter */], deps: [__WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */]] },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["f" /* MAT_DATE_FORMATS */], useValue: DATE_FORMAT },
             { provide: __WEBPACK_IMPORTED_MODULE_10__angular_material_core__["g" /* MAT_DATE_LOCALE */], useValue: 'en-US' },
@@ -297,8 +300,8 @@ module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DebtOverviewComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_service__ = __webpack_require__("../../../../../src/app/dude.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dude_debt_service__ = __webpack_require__("../../../../../src/app/dude/debt.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -343,14 +346,14 @@ DebtOverviewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.html"),
         styles: [__webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_2__dude_debt_service__["a" /* DebtService */]])
 ], DebtOverviewComponent);
 
 
 
 /***/ }),
 
-/***/ "../../../../../src/app/debt.service.ts":
+/***/ "../../../../../src/app/dude/debt.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -391,7 +394,7 @@ class Debt {
 
 /***/ }),
 
-/***/ "../../../../../src/app/dude.service.ts":
+/***/ "../../../../../src/app/dude/dude.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -431,7 +434,7 @@ class Dude {
 
 /***/ }),
 
-/***/ "../../../../../src/app/find-dude.pipe.ts":
+/***/ "../../../../../src/app/dude/find-dude.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -682,11 +685,12 @@ PaymentService = __decorate([
 ], PaymentService);
 
 class Payment {
-    constructor(at, bill, amount, by) {
+    constructor(at, bill, amount, by, forOwnBill) {
         this.at = at;
         this.bill = bill;
         this.amount = amount;
         this.by = by;
+        this.forOwnBill = forOwnBill;
     }
 }
 /* unused harmony export Payment */
@@ -776,9 +780,6 @@ let RecentActivityComponent = class RecentActivityComponent {
             this.loadingPayments = false;
         });
     }
-    findDude(id) {
-        return this.dudes.find(dude => dude.url === id);
-    }
 };
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Input */])(),
@@ -792,6 +793,34 @@ RecentActivityComponent = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_3__payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__bill_service__["b" /* BillService */]])
 ], RecentActivityComponent);
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/remove-payments-for-own-bill.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return RemovePaymentsForOwnBillPipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+let RemovePaymentsForOwnBillPipe = class RemovePaymentsForOwnBillPipe {
+    transform(value, args) {
+        return null;
+    }
+};
+RemovePaymentsForOwnBillPipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Pipe */])({
+        name: 'removePaymentsForOwnBill'
+    })
+], RemovePaymentsForOwnBillPipe);
 
 
 

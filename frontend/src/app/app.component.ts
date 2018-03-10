@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NewBillComponent } from "./new-bill/new-bill.component";
-import {Dude, DudeService} from "./dude.service";
+import {Dude, DudeService} from "./dude/dude.service";
 
 @Component({
   selector: 'app-root',

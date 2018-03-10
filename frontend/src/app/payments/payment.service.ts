@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Dude} from "./dude.service";
+import {Dude} from "../dude/dude.service";
 
 @Injectable()
 export class PaymentService {
@@ -26,17 +26,19 @@ export class PaymentService {
 }
 
 export class Payment {
-  constructor(at: Date, bill: string, amount: number, by: Dude) {
+  constructor(at: Date, bill: string, amount: number, by: Dude, forOwnBill: Boolean) {
     this.at = at;
     this.bill = bill;
     this.amount = amount;
     this.by = by;
+    this.forOwnBill = forOwnBill;
   }
 
   at: Date;
   bill: string;
   amount: number;
-  by: Dude
+  by: Dude;
+  forOwnBill: Boolean;
 }
 
 class PaymentByAmountResponse {
