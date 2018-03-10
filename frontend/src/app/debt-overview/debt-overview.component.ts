@@ -3,6 +3,7 @@ import {Dude, DudeService} from "../dude/dude.service";
 import {Debt, DebtService} from "../debt.service";
 import {PaymentService} from "../payments/payment.service";
 import {Subscription} from 'rxjs/Subscription';
+import {BillService} from "../bill.service";
 
 @Component({
   selector: 'app-debt-overview',
@@ -17,8 +18,12 @@ export class DebtOverviewComponent implements OnInit {
 
   dudeSubscription: Subscription;
   paymentSubscription: Subscription;
+  billSubscription: Subscription;
 
-  constructor(private dudeService: DudeService, private paymentService: PaymentService, private debtService: DebtService) {
+  constructor(private dudeService: DudeService,
+              private paymentService: PaymentService,
+              private billService: BillService,
+              private debtService: DebtService) {
   }
 
   ngOnInit() {
@@ -32,11 +37,17 @@ export class DebtOverviewComponent implements OnInit {
       .subscribe(() => {
         this.updateDebtOverview();
       });
+
+    this.billSubscription = this.billService.billSelectionAnnounced$
+      .subscribe(() => {
+        this.updateDebtOverview();
+      });
   }
 
   ngOnDestroy() {
     this.dudeSubscription.unsubscribe();
     this.paymentSubscription.unsubscribe();
+    this.billSubscription.unsubscribe();
   }
 
   getDudesExceptSelected(): Dude[] {

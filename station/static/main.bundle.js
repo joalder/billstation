@@ -237,6 +237,7 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return BillService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__("../../../common/esm2015/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__("../../../../rxjs/_esm2015/Subject.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -248,16 +249,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 let BillService = class BillService {
     constructor(http) {
         this.http = http;
         this.billUrl = "api/bills/";
+        this.billSelectionSource = new __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__["a" /* Subject */]();
+        this.billSelectionAnnounced$ = this.billSelectionSource.asObservable();
     }
     getBills() {
         return this.http.get(this.billUrl);
     }
     saveBill(bill) {
         return this.http.post(this.billUrl, bill);
+    }
+    newBill(newBill) {
+        this.billSelectionSource.next(newBill);
     }
 };
 BillService = __decorate([
@@ -307,6 +314,7 @@ module.exports = "<mat-card>\n  <mat-card-title>My debt</mat-card-title>\n  <mat
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dude_dude_service__ = __webpack_require__("../../../../../src/app/dude/dude.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__ = __webpack_require__("../../../../../src/app/payments/payment.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bill_service__ = __webpack_require__("../../../../../src/app/bill.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -320,10 +328,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 let DebtOverviewComponent = class DebtOverviewComponent {
-    constructor(dudeService, paymentService, debtService) {
+    constructor(dudeService, paymentService, billService, debtService) {
         this.dudeService = dudeService;
         this.paymentService = paymentService;
+        this.billService = billService;
         this.debtService = debtService;
         this.dudes = [];
         this.debtList = [];
@@ -338,10 +348,15 @@ let DebtOverviewComponent = class DebtOverviewComponent {
             .subscribe(() => {
             this.updateDebtOverview();
         });
+        this.billSubscription = this.billService.billSelectionAnnounced$
+            .subscribe(() => {
+            this.updateDebtOverview();
+        });
     }
     ngOnDestroy() {
         this.dudeSubscription.unsubscribe();
         this.paymentSubscription.unsubscribe();
+        this.billSubscription.unsubscribe();
     }
     getDudesExceptSelected() {
         return this.dudes.filter(dude => dude !== this.viewPoint);
@@ -366,7 +381,10 @@ DebtOverviewComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.html"),
         styles: [__webpack_require__("../../../../../src/app/debt-overview/debt-overview.component.css")]
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */], __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */], __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__dude_dude_service__["a" /* DudeService */],
+        __WEBPACK_IMPORTED_MODULE_3__payments_payment_service__["a" /* PaymentService */],
+        __WEBPACK_IMPORTED_MODULE_4__bill_service__["b" /* BillService */],
+        __WEBPACK_IMPORTED_MODULE_2__debt_service__["a" /* DebtService */]])
 ], DebtOverviewComponent);
 
 
@@ -551,13 +569,18 @@ let NewBillComponent = class NewBillComponent {
     }
     ngOnInit() {
         this.loadEmptyBill();
-        this.dudeService.dudeSelectionAnnounced$
+        this.dudeSelectionSubscription = this.dudeService.dudeSelectionAnnounced$
             .subscribe(dude => {
+            this.selectedDude = dude;
             this.inputBill.owner = dude.url.toString();
         });
     }
+    ngOnDestroy() {
+        this.dudeSelectionSubscription.unsubscribe();
+    }
     loadEmptyBill() {
         this.inputBill = new __WEBPACK_IMPORTED_MODULE_2__bill_service__["a" /* Bill */]();
+        this.inputBill.owner = this.selectedDude ? this.selectedDude.url.toString() : '';
         this.inputBill.date = __WEBPACK_IMPORTED_MODULE_4_moment__().format('YYYY-MM-DD');
     }
     saveBill() {
