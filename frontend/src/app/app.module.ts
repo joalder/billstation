@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
 import {NgModule,} from '@angular/core';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 
@@ -26,10 +26,10 @@ import {DudeService} from "./dude.service";
 import {BillService} from "./bill.service";
 import {PaymentService} from "./payment.service";
 
-import {MatNativeDateModule} from '@angular/material';
+import {MatIconModule, MatIconRegistry, MatNativeDateModule} from '@angular/material';
 import {DebtService} from "./debt.service";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import { FindDudePipe } from './find-dude.pipe';
+import {FindDudePipe} from './find-dude.pipe';
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
@@ -69,6 +69,7 @@ export const DATE_FORMAT = {
     MatSnackBarModule,
     MatAutocompleteModule,
     MatListModule,
+    MatIconModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
@@ -87,4 +88,8 @@ export const DATE_FORMAT = {
   schemas: []
 })
 export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
+    //Extended MaterialDesign Icon set, see 'https://materialdesignicons.com/' for icon ref
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./static/assets/mdi.svg'));
+  }
 }
