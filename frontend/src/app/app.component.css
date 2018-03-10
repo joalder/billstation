@@ -11,7 +11,6 @@
   flex-wrap: wrap;
 }
 
-.nav-toolbar {
+.nav-toolbar-container {
   width: 100%;
-  display: flex;
 }

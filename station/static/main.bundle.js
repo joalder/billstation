@@ -25,7 +25,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".layout-card {\r\n  margin: 3px;\r\n  min-width: 300px;\r\n  max-width: 90vw;\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n}\r\n\r\n.layout-card-container {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n}\r\n\r\n.nav-toolbar {\r\n  width: 100%;\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n}\r\n", ""]);
+exports.push([module.i, ".layout-card {\r\n  margin: 3px;\r\n  min-width: 300px;\r\n  max-width: 90vw;\r\n  -ms-flex-item-align: center;\r\n      -ms-grid-row-align: center;\r\n      align-self: center;\r\n}\r\n\r\n.layout-card-container {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-orient: horizontal;\r\n  -webkit-box-direction: normal;\r\n      -ms-flex-direction: row;\r\n          flex-direction: row;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n}\r\n\r\n.nav-toolbar-container {\r\n  width: 100%;\r\n}\r\n", ""]);
 
 // exports
 
@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"layout-card-container\">\n  <app-toolbar class=\"nav-toolbar\" [dudes]=\"dudes\"></app-toolbar>\n\n  <app-new-bill class=\"layout-card\" [dudes]=\"dudes\"></app-new-bill>\n  <app-new-payment class=\"layout-card\" [dudes]=\"dudes\"></app-new-payment>\n  <app-debt-overview class=\"layout-card\" [dudes]=\"dudes\"></app-debt-overview>\n  <app-recent-activity class=\"layout-card\" [dudes]=\"dudes\"></app-recent-activity>\n</div>\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div class=\"layout-card-container\">\n  <app-toolbar class=\"nav-toolbar-container\" [dudes]=\"dudes\"></app-toolbar>\n\n  <app-new-bill class=\"layout-card\" [dudes]=\"dudes\"></app-new-bill>\n  <app-new-payment class=\"layout-card\" [dudes]=\"dudes\"></app-new-payment>\n  <app-debt-overview class=\"layout-card\" [dudes]=\"dudes\"></app-debt-overview>\n  <app-recent-activity class=\"layout-card\" [dudes]=\"dudes\"></app-recent-activity>\n</div>\n"
 
 /***/ }),
 
@@ -131,6 +131,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 
 
 
@@ -178,6 +181,10 @@ const DATE_FORMAT = {
 /* unused harmony export DATE_FORMAT */
 
 let AppModule = class AppModule {
+    constructor(matIconRegistry, domSanitizer) {
+        //Extended MaterialDesign Icon set, see 'https://materialdesignicons.com/' for icon ref
+        matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./static/assets/mdi.svg'));
+    }
 };
 AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["G" /* NgModule */])({
@@ -200,13 +207,14 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_7__angular_material_card__["a" /* MatCardModule */],
             __WEBPACK_IMPORTED_MODULE_8__angular_material_input__["b" /* MatInputModule */],
             __WEBPACK_IMPORTED_MODULE_9__angular_material_datepicker__["a" /* MatDatepickerModule */],
-            __WEBPACK_IMPORTED_MODULE_25__angular_material__["e" /* MatNativeDateModule */],
+            __WEBPACK_IMPORTED_MODULE_25__angular_material__["g" /* MatNativeDateModule */],
             __WEBPACK_IMPORTED_MODULE_12__angular_material_select__["a" /* MatSelectModule */],
-            __WEBPACK_IMPORTED_MODULE_25__angular_material__["g" /* MatToolbarModule */],
+            __WEBPACK_IMPORTED_MODULE_25__angular_material__["i" /* MatToolbarModule */],
             __WEBPACK_IMPORTED_MODULE_13__angular_material_button__["a" /* MatButtonModule */],
             __WEBPACK_IMPORTED_MODULE_14__angular_material_snack_bar__["b" /* MatSnackBarModule */],
             __WEBPACK_IMPORTED_MODULE_16__angular_material_autocomplete__["a" /* MatAutocompleteModule */],
             __WEBPACK_IMPORTED_MODULE_15__angular_material_list__["a" /* MatListModule */],
+            __WEBPACK_IMPORTED_MODULE_25__angular_material__["e" /* MatIconModule */],
             __WEBPACK_IMPORTED_MODULE_4__angular_forms__["i" /* ReactiveFormsModule */],
             __WEBPACK_IMPORTED_MODULE_27__angular_flex_layout__["a" /* FlexLayoutModule */],
             __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["b" /* HttpClientModule */],
@@ -223,7 +231,8 @@ AppModule = __decorate([
         ],
         bootstrap: [__WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* AppComponent */]],
         schemas: []
-    })
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_25__angular_material__["f" /* MatIconRegistry */], __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["c" /* DomSanitizer */]])
 ], AppModule);
 
 
@@ -703,7 +712,7 @@ NewPaymentComponent = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__dude_dude_service__["a" /* DudeService */],
         __WEBPACK_IMPORTED_MODULE_1__payments_payment_service__["a" /* PaymentService */],
-        __WEBPACK_IMPORTED_MODULE_4__angular_material__["f" /* MatSnackBar */]])
+        __WEBPACK_IMPORTED_MODULE_4__angular_material__["h" /* MatSnackBar */]])
 ], NewPaymentComponent);
 
 
@@ -906,7 +915,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, ".nav-toolbar {\r\n  padding: 1em;\r\n}\r\n\r\n.nav-toolbar__spacer {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1 1 auto;\r\n          flex: 1 1 auto;\r\n}\r\n", ""]);
 
 // exports
 
@@ -919,7 +928,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/toolbar/toolbar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-toolbar>\n  <form #viewPointForm=\"ngForm\">\n    <mat-form-field>\n      <mat-select matInput [(value)]=\"selectedDude\" (change)=\"dudeSelected()\"  name=\"pov\" placeholder=\"View Point\" required>\n        <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude\">\n          {{ dude.name }}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n  </form>\n\n  <span>Billstation</span>\n</mat-toolbar>\n"
+module.exports = "<mat-toolbar class=\"nav-toolbar-container mat-elevation-z6\">\n  <form #viewPointForm=\"ngForm\">\n    <mat-form-field>\n      <mat-select matInput [(value)]=\"selectedDude\" (change)=\"dudeSelected()\"  name=\"pov\" placeholder=\"View Point\" required>\n        <mat-option *ngFor=\"let dude of dudes\" [value]=\"dude\">\n          {{ dude.name }}\n        </mat-option>\n      </mat-select>\n    </mat-form-field>\n  </form>\n\n  <span class=\"nav-toolbar__spacer\"></span>\n\n  <span>Billstation</span>\n</mat-toolbar>\n"
 
 /***/ }),
 
