@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PaymentService} from "../payments/payment.service";
-import {Dude} from "../dude/dude.service";
+import {Dude, DudeService} from "../dude/dude.service";
 import {FormControl} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 
@@ -20,13 +20,15 @@ export class NewPaymentComponent implements OnInit {
 
   loaded: Boolean = false;
 
-  constructor(private paymentService: PaymentService,
+  constructor(private dudeService: DudeService,
+              private paymentService: PaymentService,
               public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
+    this.dudeService.dudeSelectionAnnounced$
+      .subscribe(dude => this.sender = dude);
   }
-
 
   getDudesExceptSelected(): Dude[] {
     return this.dudes.filter(dude => dude !== this.sender);

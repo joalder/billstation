@@ -10,3 +10,8 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.nav-toolbar {
+  width: 100%;
+  display: flex;
+}

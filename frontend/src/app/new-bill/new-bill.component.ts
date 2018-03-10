@@ -15,11 +15,17 @@ export class NewBillComponent implements OnInit {
   inputBill: Bill;
 
   constructor(private billService: BillService,
+              private dudeService: DudeService,
               public snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
     this.loadEmptyBill();
+
+    this.dudeService.dudeSelectionAnnounced$
+      .subscribe(dude => {
+        this.inputBill.owner = dude.url.toString();
+      });
   }
 
   loadEmptyBill(): void {

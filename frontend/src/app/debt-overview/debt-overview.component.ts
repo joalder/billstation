@@ -17,6 +17,11 @@ export class DebtOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dudeService.dudeSelectionAnnounced$
+      .subscribe(dude => {
+        this.viewPoint = dude;
+        this.viewPointChanged();
+      });
   }
 
   getDudesExceptSelected(): Dude[] {

@@ -3,14 +3,6 @@
   <mat-card-content>
     <form #paymentForm="ngForm">
       <mat-form-field>
-        <mat-select matInput [(value)]="sender" name="owner" placeholder="View Point" required>
-          <mat-option *ngFor="let dude of dudes" [value]="dude">
-            {{ dude.name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field>
         <input type="text"
                matInput
                [formControl]="dudeAutoComplete"
