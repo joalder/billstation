@@ -15,7 +15,8 @@ export class RecentActivityComponent implements OnInit {
   public dudes: Dude[] = [];
   public bills: Bill[] = [];
   public payments: Payment[] = [];
-  public loading: boolean = true;
+  public loadingBills: boolean = true;
+  public loadingPayments: boolean = true;
 
   constructor(private http: HttpClient, private paymentService: PaymentService, private billService: BillService) {
   }
@@ -26,14 +27,16 @@ export class RecentActivityComponent implements OnInit {
 
   loadData() {
     this.billService.getBills()
-      .subscribe(bills =>
-        this.bills = bills);
+      .subscribe(bills => {
+        this.bills = bills;
+        this.loadingBills = false;
+      });
 
     this.paymentService.getPayments()
-      .subscribe(payments =>
-        this.payments = payments);
+      .subscribe(payments => {
+        this.payments = payments;
+        this.loadingPayments = false;
+      });
 
-    this.loading = false;
   }
-
 }

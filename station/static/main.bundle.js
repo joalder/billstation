@@ -122,12 +122,14 @@ AppComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__angular_material__ = __webpack_require__("../../../material/esm2015/material.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__debt_service__ = __webpack_require__("../../../../../src/app/debt.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__angular_flex_layout__ = __webpack_require__("../../../flex-layout/esm2015/flex-layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__ = __webpack_require__("../../../../../src/app/find-dude.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -181,6 +183,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_19__recent_activity_recent_activity_component__["a" /* RecentActivityComponent */],
             __WEBPACK_IMPORTED_MODULE_20__new_bill_new_bill_component__["a" /* NewBillComponent */],
             __WEBPACK_IMPORTED_MODULE_21__new_payment_new_payment_component__["a" /* NewPaymentComponent */],
+            __WEBPACK_IMPORTED_MODULE_28__find_dude_pipe__["a" /* FindDudePipe */],
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -423,6 +426,38 @@ DudeService = __decorate([
 class Dude {
 }
 /* unused harmony export Dude */
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/find-dude.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FindDudePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm2015/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+let FindDudePipe = class FindDudePipe {
+    transform(dudes, url) {
+        let dude;
+        if (dudes !== undefined && dudes.length > 0) {
+            dude = dudes.find(dude => dude.url === url);
+        }
+        return dude;
+    }
+};
+FindDudePipe = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Pipe */])({
+        name: 'findDude'
+    })
+], FindDudePipe);
 
 
 
@@ -689,7 +724,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/recent-activity/recent-activity.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loading\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loading\">\r\n        <mat-list-item *ngFor=\"let payment of payments | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ payment.by }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
+module.exports = "<mat-card>\r\n  <mat-card-title>Recent activity</mat-card-title>\r\n  <mat-card-content>\r\n\r\n    <div *ngIf=\"loading\">\r\n      Loading recent activities\r\n    </div>\r\n\r\n    <div fxFlex=\"grow\" fxLayout=\"column\">\r\n      <h2 mat-subheader>Bills</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingBills\">\r\n        <mat-list-item *ngFor=\"let bill of bills | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ bill.description }}</div>\r\n            <div>{{ (dudes | findDude:bill.owner).name }}</div>\r\n            <div>{{ bill.amount }}</div>\r\n            <div>{{ bill.created | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n\r\n      <h2 mat-subheader>Payments</h2>\r\n\r\n      <mat-list *ngIf=\"!loadingPayments\">\r\n        <mat-list-item *ngFor=\"let payment of payments | slice:0:5\"\r\n                       fxLayout=\"column\">\r\n          <div fxFlex=\"grow\"\r\n               fxLayout=\"row\"\r\n               fxLayoutAlign=\"space-between center\">\r\n            <div>{{ (dudes | findDude:payment.by).name }}</div>\r\n            <div>{{ payment.amount }}</div>\r\n            <div>{{ payment.at | date:'short' }}</div>\r\n          </div>\r\n        </mat-list-item>\r\n      </mat-list>\r\n    </div>\r\n  </mat-card-content>\r\n</mat-card>\r\n"
 
 /***/ }),
 
@@ -723,17 +758,26 @@ let RecentActivityComponent = class RecentActivityComponent {
         this.dudes = [];
         this.bills = [];
         this.payments = [];
-        this.loading = true;
+        this.loadingBills = true;
+        this.loadingPayments = true;
     }
     ngOnInit() {
         this.loadData();
     }
     loadData() {
         this.billService.getBills()
-            .subscribe(bills => this.bills = bills);
+            .subscribe(bills => {
+            this.bills = bills;
+            this.loadingBills = false;
+        });
         this.paymentService.getPayments()
-            .subscribe(payments => this.payments = payments);
-        this.loading = false;
+            .subscribe(payments => {
+            this.payments = payments;
+            this.loadingPayments = false;
+        });
+    }
+    findDude(id) {
+        return this.dudes.find(dude => dude.url === id);
     }
 };
 __decorate([

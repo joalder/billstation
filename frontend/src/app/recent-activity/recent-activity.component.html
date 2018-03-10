@@ -9,13 +9,14 @@
     <div fxFlex="grow" fxLayout="column">
       <h2 mat-subheader>Bills</h2>
 
-      <mat-list *ngIf="!loading">
+      <mat-list *ngIf="!loadingBills">
         <mat-list-item *ngFor="let bill of bills | slice:0:5"
                        fxLayout="column">
           <div fxFlex="grow"
                fxLayout="row"
                fxLayoutAlign="space-between center">
             <div>{{ bill.description }}</div>
+            <div>{{ (dudes | findDude:bill.owner).name }}</div>
             <div>{{ bill.amount }}</div>
             <div>{{ bill.created | date:'short' }}</div>
           </div>
@@ -24,13 +25,13 @@
 
       <h2 mat-subheader>Payments</h2>
 
-      <mat-list *ngIf="!loading">
+      <mat-list *ngIf="!loadingPayments">
         <mat-list-item *ngFor="let payment of payments | slice:0:5"
                        fxLayout="column">
           <div fxFlex="grow"
                fxLayout="row"
                fxLayoutAlign="space-between center">
-            <div>{{ payment.by }}</div>
+            <div>{{ (dudes | findDude:payment.by).name }}</div>
             <div>{{ payment.amount }}</div>
             <div>{{ payment.at | date:'short' }}</div>
           </div>
