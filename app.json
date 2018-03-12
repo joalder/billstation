@@ -25,10 +25,6 @@
     "WEB_CONCURRENCY": {
       "description": "The number of processes to run.",
       "value": "1"
-    },
-    "BUILD_DIR": {
-      "description": "nodejs build dir",
-      "value": "frontend/"
     }
   }
 }
