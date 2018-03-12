@@ -91,6 +91,7 @@ ENV/
 db.sqlite3
 /frontend/node_modules/
 station/static/*.js.map
+station/static/assets
 
 .idea/*
 !.idea/runConfigurations
