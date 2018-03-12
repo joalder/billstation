@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="nav-toolbar-container mat-elevation-z6">
   <form #viewPointForm="ngForm">
     <mat-form-field>
       <mat-select matInput [(value)]="selectedDude" (change)="dudeSelected()"  name="pov" placeholder="View Point" required>
@@ -8,6 +8,8 @@
       </mat-select>
     </mat-form-field>
   </form>
+
+  <span class="nav-toolbar__spacer"></span>
 
   <span>Billstation</span>
 </mat-toolbar>

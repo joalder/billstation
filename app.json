@@ -4,8 +4,17 @@
 
   "repository": "https://github.com/joalder/billstation/",
 
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+
   "scripts": {
-    "postdeploy": "python manage.py collectstatic"
+    "postdeploy": "./postdeploy.sh"
   },
 
   "env": {
@@ -16,6 +25,10 @@
     "WEB_CONCURRENCY": {
       "description": "The number of processes to run.",
       "value": "1"
+    },
+    "BUILD_DIR": {
+      "description": "nodejs build dir",
+      "value": "frontend/"
     }
   }
 }
