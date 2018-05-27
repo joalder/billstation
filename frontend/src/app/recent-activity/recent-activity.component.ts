@@ -17,6 +17,7 @@ export class RecentActivityComponent implements OnInit {
   public payments: Payment[] = [];
   public loadingBills: boolean = true;
   public loadingPayments: boolean = true;
+  loading: any;
 
   constructor(private http: HttpClient, private paymentService: PaymentService, private billService: BillService) {
   }
