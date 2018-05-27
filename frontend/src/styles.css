@@ -1,3 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.login-form > * {
+  margin: 5px;
+}
+
+.login-form > label {
+  text-align: center;
+  font-size: 2em;
+}
+
+.login-form > input {
+  font-size: 2em;
+  border: 0;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: #424242;
+}

@@ -10,6 +10,7 @@ router.register(r'bills', BillViewSet)
 router.register(r'payments', PaymentViewSet)
 
 urlpatterns = [
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'api/debt/(?P<owner_id>[0-9]+)/(?P<debtor_id>[0-9]+)/$', debt_by_relation),

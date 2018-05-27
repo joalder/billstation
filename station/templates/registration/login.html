@@ -1,0 +1,42 @@
+<!doctype html>
+
+{% load static %}
+
+<html>
+<head>
+    <title>{% block title %}Billstation is back!{% endblock %}</title>
+
+    <meta charset="utf-8">
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="{% static "favicon.ico" %}">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+    <body class="mat-app-background">
+        {% block content %}
+            <form class="login-form" method="post" action="accounts/login/">
+                {% csrf_token %}
+
+                <label for="username">
+                    Username
+                </label>
+                <input type="text" name="username"/>
+                <label for="password">
+                    Password
+                </label>
+                <input type="password" name="password"/>
+
+                <input type="submit" value="Login"/>
+            </form>
+        {% endblock %}
+
+        <script type="text/javascript" src="{% static "inline.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "polyfills.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "styles.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "vendor.bundle.js" %}"></script>
+        <script type="text/javascript" src="{% static "main.bundle.js" %}"></script>
+    </body>
+</html>

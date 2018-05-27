@@ -1,4 +1,5 @@
 import django_filters
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from rest_framework import response, schemas, serializers, viewsets
 from rest_framework.decorators import api_view, renderer_classes
@@ -9,6 +10,7 @@ from .models import *
 
 
 # Serves and renders the AngularJS main page
+@login_required
 def serve_main_page(request):
     return render(request, "main.html")
 
