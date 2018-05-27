@@ -7,16 +7,8 @@
   "buildpacks": [
     {
       "url": "heroku/python"
-    },
-    {
-      "url": "heroku/nodejs"
     }
   ],
-
-  "scripts": {
-    "predeploy": "ln -s frontend/package.json . && ln -s frontend/node_modules .",
-    "postdeploy": "postdeploy.sh"
-  },
 
   "env": {
     "SECRET_TOKEN": {
