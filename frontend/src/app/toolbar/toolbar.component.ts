@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Dude, DudeService} from "../dude/dude.service";
 
 @Component({
@@ -13,9 +13,15 @@ export class ToolbarComponent implements OnInit {
   @Input()
   dudes: Dude[];
 
+  @ViewChild('dudeSelect') dudeSelect;
+
   selectedDude: Dude;
 
   ngOnInit() {
+    this.dudeService.dudeSelectionAnnounced$
+      .subscribe(selectedDude => {
+        this.selectedDude = this.dudes.find((dude) => dude.id === selectedDude.id)
+      })
   }
 
   public dudeSelected(): void {

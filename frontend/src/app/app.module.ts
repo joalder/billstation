@@ -32,6 +32,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {FindDudePipe} from './dude/find-dude.pipe';
 import {RemovePaymentsForOwnBillPipe} from './payments/remove-payments-for-own-bill.pipe';
 import {ToolbarComponent} from './toolbar/toolbar.component';
+import {LocalStorageModule} from "@ngx-pwa/local-storage";
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
@@ -77,6 +78,7 @@ export const DATE_FORMAT = {
     MatIconModule,
     ReactiveFormsModule,
     FlexLayoutModule,
+    LocalStorageModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'csrftoken',
