@@ -12,7 +12,7 @@
         <ng-container *ngIf="bills.length > 0">
           <h2 mat-subheader>Bills</h2>
           <mat-divider></mat-divider>
-          <mat-list-item *ngFor="let bill of bills | slice:0:5; let last = last;">
+          <mat-list-item *ngFor="let bill of bills | slice:0:5; let last = last;" class="bills-list">
             <!-- Main -->
             <div class="main-row" mat-line fxLayout="row" fxLayoutGap="12px">
               <div>{{ bill.description }}</div>
@@ -35,16 +35,23 @@
         <!-- Payments -->
         <ng-container *ngIf="payments.length > 0">
           <h2 mat-subheader>Payments</h2>
-          <mat-list-item
-            *ngFor="let payment of payments | slice:0:5 "
-            fxLayout="column">
-            <div fxFlex="grow"
-                 fxLayout="row"
-                 fxLayoutAlign="space-between center">
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let payment of payments | slice:0:5; let last = last" class="payments-list">
+            <!-- Main -->
+            <div class="main-row" mat-line fxLayout="row" fxLayoutGap="12px">
               <div>{{ (dudes | findDude:payment.by).name }}</div>
+              <div fxFlex></div>
               <div>{{ payment.amount }}</div>
+              <mat-icon svgIcon="cash" mat-list-icon></mat-icon>
+            </div>
+
+            <!-- Sub -->
+            <div class="sub-row" mat-line fxLayout="row">
+              <div fxFlex></div>
               <div>{{ payment.at | date:'short' }}</div>
             </div>
+
+            <mat-divider *ngIf="!last"></mat-divider>
           </mat-list-item>
         </ng-container>
 

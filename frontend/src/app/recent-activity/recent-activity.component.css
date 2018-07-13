@@ -2,11 +2,19 @@
   min-width: 400px;
 }
 
-.mat-list-item .main-row,
-.mat-list-item .sub-row {
+.mat-list-item .main-row {
   line-height: 32px;
 }
 
 .mat-list-item .sub-row {
+  line-height: 24px;
   font-size: 12px;
+}
+
+.bills-list {
+
+}
+
+.payments-list {
+
 }
