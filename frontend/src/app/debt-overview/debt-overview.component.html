@@ -1,8 +1,18 @@
 <mat-card>
   <mat-card-title>My debt</mat-card-title>
   <mat-card-content>
-    <mat-list dense>
-      <mat-list-item *ngFor="let debt of debtList">{{ debt.owner.name }}: {{ debt.amount }} ({{ debt.relation }})</mat-list-item>
+    <mat-list>
+      <h2 mat-subheader>Creditor</h2>
+      <mat-divider></mat-divider>
+      <mat-list-item *ngFor="let debt of debtList">
+        <!-- Main -->
+        <div class="main-row" mat-line fxLayout="row" fxLayoutGap="12px">
+          <div>{{ debt.owner.name }}</div>
+          <div fxFlex></div>
+          <div>{{ debt.amount | currency:'CHF'}}</div>
+          <mat-icon svgIcon="cash" mat-list-icon></mat-icon>
+        </div>
+      </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
