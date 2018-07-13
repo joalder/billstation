@@ -51,7 +51,7 @@ export class DebtOverviewComponent implements OnInit {
   }
 
   getDudesExceptSelected(): Dude[] {
-    return this.dudes.filter(dude => dude !== this.viewPoint);
+    return this.dudes.filter(dude => dude.id !== this.viewPoint.id);
   }
 
   updateDebtOverview(): void {
