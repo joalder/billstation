@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
       .pipe(tap(() => this.dudeService.initSelectedDude()))
       .subscribe(dudes => {
         this.dudes = dudes;
-        this.dudeService.initSelectedDude();
       });
   }
 
