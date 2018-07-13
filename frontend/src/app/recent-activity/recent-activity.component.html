@@ -2,40 +2,52 @@
   <mat-card-title>Recent activity</mat-card-title>
   <mat-card-content>
 
-    <div *ngIf="loading">
+    <div *ngIf="loadingBills || loadingPayments">
       Loading recent activities
     </div>
 
     <div fxFlex="grow" fxLayout="column">
-      <h2 mat-subheader>Bills</h2>
+      <mat-list>
+        <!-- Bills -->
+        <ng-container *ngIf="bills.length > 0">
+          <h2 mat-subheader>Bills</h2>
+          <mat-divider></mat-divider>
+          <mat-list-item *ngFor="let bill of bills | slice:0:5; let last = last;">
+            <!-- Main -->
+            <div class="main-row" mat-line fxLayout="row" fxLayoutGap="12px">
+              <div>{{ bill.description }}</div>
+              <div fxFlex></div>
+              <div>{{ bill.amount }}</div>
+              <mat-icon svgIcon="cash" mat-list-icon></mat-icon>
+            </div>
 
-      <mat-list *ngIf="!loadingBills">
-        <mat-list-item *ngFor="let bill of bills | slice:0:5"
-                       fxLayout="column">
-          <div fxFlex="grow"
-               fxLayout="row"
-               fxLayoutAlign="space-between center">
-            <div>{{ bill.description }}</div>
-            <div>{{ (dudes | findDude:bill.owner).name }}</div>
-            <div>{{ bill.amount }}</div>
-            <div>{{ bill.created | date:'short' }}</div>
-          </div>
-        </mat-list-item>
-      </mat-list>
+            <!-- Sub -->
+            <div class="sub-row" mat-line fxLayout="row">
+              <div>{{ (dudes | findDude:bill.owner).name }}</div>
+              <div fxFlex></div>
+              <div>{{ bill.created | date:'short' }}</div>
+            </div>
 
-      <h2 mat-subheader>Payments</h2>
+            <mat-divider *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </ng-container>
 
-      <mat-list *ngIf="!loadingPayments">
-        <mat-list-item *ngFor="let payment of payments | removePaymentsForOwnBill | slice:0:5"
-                       fxLayout="column">
-          <div fxFlex="grow"
-               fxLayout="row"
-               fxLayoutAlign="space-between center">
-            <div>{{ (dudes | findDude:payment.by).name }}</div>
-            <div>{{ payment.amount }}</div>
-            <div>{{ payment.at | date:'short' }}</div>
-          </div>
-        </mat-list-item>
+        <!-- Payments -->
+        <ng-container *ngIf="payments.length > 0">
+          <h2 mat-subheader>Payments</h2>
+          <mat-list-item
+            *ngFor="let payment of payments | slice:0:5 "
+            fxLayout="column">
+            <div fxFlex="grow"
+                 fxLayout="row"
+                 fxLayoutAlign="space-between center">
+              <div>{{ (dudes | findDude:payment.by).name }}</div>
+              <div>{{ payment.amount }}</div>
+              <div>{{ payment.at | date:'short' }}</div>
+            </div>
+          </mat-list-item>
+        </ng-container>
+
       </mat-list>
     </div>
   </mat-card-content>
