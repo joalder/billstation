@@ -1,5 +1,5 @@
 import {BrowserModule, DomSanitizer} from '@angular/platform-browser';
-import {NgModule,} from '@angular/core';
+import {LOCALE_ID, NgModule,} from '@angular/core';
 import {HttpClientModule, HttpClientXsrfModule} from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -33,6 +33,10 @@ import {FindDudePipe} from './dude/find-dude.pipe';
 import {RemovePaymentsForOwnBillPipe} from './payments/remove-payments-for-own-bill.pipe';
 import {ToolbarComponent} from './toolbar/toolbar.component';
 import {LocalStorageModule} from "@ngx-pwa/local-storage";
+import {registerLocaleData} from "@angular/common";
+import localeDECH from '@angular/common/locales/de-CH';
+
+registerLocaleData(localeDECH);
 
 // See the Moment.js docs for the meaning of these formats:
 // https://momentjs.com/docs/#/displaying/format/
@@ -89,7 +93,8 @@ export const DATE_FORMAT = {
     DudeService, BillService, PaymentService, DebtService,
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: DATE_FORMAT},
-    {provide: MAT_DATE_LOCALE, useValue: 'en-US'},
+    {provide: MAT_DATE_LOCALE, useValue: 'de-CH'},
+    {provide: LOCALE_ID, useValue: 'de-ch'}
   ],
   bootstrap: [AppComponent],
   schemas: []
