@@ -2,8 +2,18 @@
 <div class="layout-card-container">
   <app-toolbar class="nav-toolbar-container" [dudes]="dudes"></app-toolbar>
 
-  <app-new-bill class="layout-card" [dudes]="dudes"></app-new-bill>
-  <app-new-payment class="layout-card" [dudes]="dudes"></app-new-payment>
-  <app-debt-overview class="layout-card" [dudes]="dudes"></app-debt-overview>
-  <app-recent-activity class="layout-card" [dudes]="dudes"></app-recent-activity>
+  <div fxLayout="row" fxLayoutGap="1em" fx>
+    <div>
+      <app-new-bill class="layout-card" [dudes]="dudes"></app-new-bill>
+    </div>
+    <div>
+      <app-new-payment class="layout-card" [dudes]="dudes"></app-new-payment>
+    </div>
+    <div>
+      <app-debt-overview class="layout-card" [dudes]="dudes"></app-debt-overview>
+    </div>
+    <div>
+      <app-recent-activity class="layout-card" [dudes]="dudes"></app-recent-activity>
+    </div>
+  </div>
 </div>
