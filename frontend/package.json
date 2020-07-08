@@ -27,7 +27,7 @@
     "@angular/router": "^5.2.11",
     "@ngx-pwa/local-storage": "^5.3.0",
     "core-js": "^2.5.7",
-    "moment": "^2.22.1",
+    "moment": "^2.26.0",
     "rxjs": "^5.5.11",
     "zone.js": "^0.8.26"
   },
