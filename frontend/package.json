@@ -29,7 +29,7 @@
     "core-js": "^2.5.7",
     "moment": "^2.22.1",
     "rxjs": "^5.5.11",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.10.3"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.4",
