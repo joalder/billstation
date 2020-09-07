@@ -34,3 +34,4 @@ virtualenv==15.1.0
 virtualenv-clone==0.2.6
 whitenoise==3.3.1
 win-unicode-console==0.5
+pip>=19.2 # not directly required, pinned by Snyk to avoid a vulnerability
